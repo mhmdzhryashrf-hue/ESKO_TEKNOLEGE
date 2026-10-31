@@ -451,6 +451,129 @@ footer {
     transition:none !important;
   }
 }
+
+/* ESKO_FEATURE_PACK_01 */
+.esko-control-center {
+  margin: 28px 0;
+  padding: 22px;
+  border: 1px solid rgba(53,232,255,.22);
+  border-radius: 20px;
+  background: linear-gradient(145deg,rgba(25,24,54,.94),rgba(12,15,31,.94));
+  box-shadow: 0 12px 40px rgba(0,0,0,.18);
+}
+.esko-control-center h2 { margin: 0 0 8px; }
+.esko-control-center p { color: var(--muted); }
+.esko-controls {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(145px,1fr));
+  gap: 10px;
+  margin-top: 16px;
+}
+.esko-control-btn, .esko-control-select {
+  min-height: 43px;
+  padding: 10px 13px;
+  border: 1px solid rgba(53,232,255,.25);
+  border-radius: 11px;
+  background: rgba(53,232,255,.07);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+.esko-control-btn:hover, .esko-control-select:hover {
+  border-color: var(--cyan);
+  background: rgba(53,232,255,.13);
+}
+.esko-control-select option {
+  background: #111326;
+  color: white;
+}
+.esko-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.esko-stat {
+  flex: 1 1 115px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(255,255,255,.025);
+  text-align: center;
+}
+.esko-stat strong {
+  display: block;
+  color: var(--cyan);
+  font-size: 21px;
+}
+.esko-favorite-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(155,92,255,.09);
+  color: var(--text);
+  cursor: pointer;
+  font: inherit;
+}
+.esko-favorite-btn.active {
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+.esko-empty {
+  display: none;
+  padding: 20px;
+  text-align: center;
+  color: var(--muted);
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+}
+.esko-top-btn {
+  position: fixed;
+  left: 18px;
+  bottom: 20px;
+  z-index: 30;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--cyan);
+  border-radius: 50%;
+  background: #111326;
+  color: var(--cyan);
+  font-size: 21px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(10px);
+  transition: .2s ease;
+}
+.esko-top-btn.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+body.esko-alt-theme {
+  --bg: #101a20;
+  --panel: #17252d;
+  --panel2: #20333d;
+  --purple: #45d6c5;
+  --cyan: #a5fff0;
+  --line: rgba(100,255,225,.23);
+}
+body.esko-reduce-motion *,
+body.esko-reduce-motion *::before,
+body.esko-reduce-motion *::after {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+@media(max-width:600px) {
+  .esko-control-center { padding: 15px; }
+  .esko-controls { grid-template-columns: 1fr 1fr; }
+}
+
 </style>
 </head>
 
@@ -511,7 +634,7 @@ footer {
 
   <div class="download-panel">
     <div>
-      <h3>ESKO OPEN HUB V1.0.0</h3>
+      <h3>ESKO OPEN HUB V2.0.0</h3>
       <p>
         نزّل التطبيق على جهاز Android من خلال زر التنزيل.
         بعد اكتمال التنزيل، افتح التطبيق ووافق على التثبيت من شاشة Android.
@@ -520,8 +643,8 @@ footer {
     </div>
 
     <a class="btn primary"
-       href="./downloads/ESKO-OPEN-HUB-V1.apk"
-       download="ESKO-OPEN-HUB-V1.apk">
+       href="./downloads/ESKO-OPEN-HUB-V2.apk"
+       download="ESKO-OPEN-HUB-V2.apk">
        ⬇ تنزيل وتثبيت التطبيق
     </a>
   </div>
@@ -533,7 +656,7 @@ footer {
   </div>
 
   <p>
-    <a class="tag" href="./downloads/ESKO-OPEN-HUB-V1.apk.sha256">
+    <a class="tag" href="./downloads/ESKO-OPEN-HUB-V2.apk.sha256">
       عرض بصمة SHA-256
     </a>
   </p>
@@ -612,6 +735,37 @@ footer {
     </article>
 
   </div>
+</section>
+
+
+<section class="esko-control-center" id="eskoControlCenter">
+  <span class="eyebrow">🃏 ESKO SMART CONTROL</span>
+  <h2>مركز التحكم الذكي</h2>
+  <p>خصص تجربتك، ونظم مكتبة الأدوات، واحفظ اختياراتك على جهازك.</p>
+
+  <div class="esko-controls">
+    <button class="esko-control-btn" id="eskoFavoritesOnly" type="button">☆ عرض المفضلة</button>
+    <button class="esko-control-btn" id="eskoClearSearch" type="button">مسح البحث</button>
+    <select class="esko-control-select" id="eskoCategory" aria-label="تصفية حسب التصنيف">
+      <option value="">كل التصنيفات</option>
+    </select>
+    <select class="esko-control-select" id="eskoSort" aria-label="ترتيب الأدوات">
+      <option value="default">الترتيب الأصلي</option>
+      <option value="az">الاسم: أ إلى ي</option>
+      <option value="za">الاسم: ي إلى أ</option>
+    </select>
+    <button class="esko-control-btn" id="eskoTheme" type="button">تغيير المظهر</button>
+    <button class="esko-control-btn" id="eskoMotion" type="button">تقليل الحركة</button>
+    <button class="esko-control-btn" id="eskoShare" type="button">مشاركة الموقع</button>
+    <button class="esko-control-btn" id="eskoCopyLink" type="button">نسخ رابط الموقع</button>
+  </div>
+
+  <div class="esko-stats">
+    <div class="esko-stat"><strong id="eskoVisibleCount">0</strong><span>نتائج ظاهرة</span></div>
+    <div class="esko-stat"><strong id="eskoFavoriteCount">0</strong><span>أدوات مفضلة</span></div>
+    <div class="esko-stat"><strong id="eskoVisitCount">0</strong><span>زيارات على هذا الجهاز</span></div>
+  </div>
+  <p id="eskoFeatureStatus" role="status" aria-live="polite">كل أدوات التحكم جاهزة.</p>
 </section>
 
 <section>
@@ -768,6 +922,292 @@ footer {
   document.getElementById("year").textContent =
     new Date().getFullYear();
 })();
+</script>
+<script>
+
+/* ESKO_FEATURE_PACK_01 */
+(function () {
+  "use strict";
+
+  const $ = (selector) => document.querySelector(selector);
+  const cards = Array.from(document.querySelectorAll("#toolGrid .card"));
+  const search = $("#toolSearch");
+  const grid = $("#toolGrid");
+  const status = $("#eskoFeatureStatus");
+
+  if (!grid || !search || !cards.length) return;
+
+  const safeRead = (key, fallback) => {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : JSON.parse(value);
+    } catch (_) {
+      return fallback;
+    }
+  };
+
+  const safeWrite = (key, value) => {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+      return true;
+    } catch (_) {
+      return false;
+    }
+  };
+
+  let favorites = safeRead("esko_web_favorites", []);
+  if (!Array.isArray(favorites)) favorites = [];
+
+  let favoritesOnly = false;
+  const originalOrder = cards.slice();
+
+  function notify(message) {
+    if (status) status.textContent = message;
+    const toast = $("#eskoToast");
+    if (toast) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+  }
+
+  function cardName(card) {
+    return (card.querySelector("h3")?.textContent || "").trim();
+  }
+
+  function cardCategory(card) {
+    return (card.querySelector(".tag")?.textContent || "").trim();
+  }
+
+  function cardId(card) {
+    return cardName(card).toLowerCase();
+  }
+
+  const categorySelect = $("#eskoCategory");
+  const categories = [...new Set(cards.map(cardCategory).filter(Boolean))];
+
+  categories.forEach((category) => {
+    const option = document.createElement("option");
+    option.value = category;
+    option.textContent = category;
+    categorySelect.appendChild(option);
+  });
+
+  cards.forEach((card) => {
+    const id = cardId(card);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "esko-favorite-btn";
+    button.setAttribute("aria-pressed", String(favorites.includes(id)));
+    button.textContent = favorites.includes(id) ? "★ في المفضلة" : "☆ أضف للمفضلة";
+
+    button.addEventListener("click", () => {
+      if (favorites.includes(id)) {
+        favorites = favorites.filter((item) => item !== id);
+      } else {
+        favorites.push(id);
+      }
+      safeWrite("esko_web_favorites", favorites);
+      updateFavoriteButtons();
+      filterCards();
+      notify("تم تحديث قائمة المفضلة على جهازك.");
+    });
+
+    card.appendChild(button);
+  });
+
+  function updateFavoriteButtons() {
+    cards.forEach((card) => {
+      const button = card.querySelector(".esko-favorite-btn");
+      const active = favorites.includes(cardId(card));
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+      button.textContent = active ? "★ في المفضلة" : "☆ أضف للمفضلة";
+    });
+
+    $("#eskoFavoriteCount").textContent = favorites.length;
+    $("#eskoFavoritesOnly").textContent =
+      favoritesOnly ? "عرض كل الأدوات" : "☆ عرض المفضلة";
+  }
+
+  function sortCards() {
+    const mode = $("#eskoSort").value;
+    let ordered = originalOrder.slice();
+
+    if (mode === "az") {
+      ordered.sort((a, b) => cardName(a).localeCompare(cardName(b), "ar"));
+    } else if (mode === "za") {
+      ordered.sort((a, b) => cardName(b).localeCompare(cardName(a), "ar"));
+    }
+
+    ordered.forEach((card) => grid.appendChild(card));
+  }
+
+  function filterCards() {
+    const query = search.value.trim().toLowerCase();
+    const category = categorySelect.value;
+    let visible = 0;
+
+    cards.forEach((card) => {
+      const searchable = (
+        (card.dataset.search || "") + " " + card.textContent
+      ).toLowerCase();
+
+      const matchesQuery = searchable.includes(query);
+      const matchesCategory = !category || cardCategory(card) === category;
+      const matchesFavorite = !favoritesOnly || favorites.includes(cardId(card));
+      const show = matchesQuery && matchesCategory && matchesFavorite;
+
+      card.hidden = !show;
+      if (show) visible++;
+    });
+
+    $("#eskoVisibleCount").textContent = visible;
+
+    let empty = $("#eskoEmptyMessage");
+    if (!empty) {
+      empty = document.createElement("p");
+      empty.id = "eskoEmptyMessage";
+      empty.className = "esko-empty";
+      empty.textContent = "مفيش أدوات مطابقة للبحث الحالي.";
+      grid.after(empty);
+    }
+    empty.style.display = visible ? "none" : "block";
+  }
+
+  search.addEventListener("input", filterCards);
+  categorySelect.addEventListener("change", filterCards);
+  $("#eskoSort").addEventListener("change", () => {
+    sortCards();
+    filterCards();
+  });
+
+  $("#eskoFavoritesOnly").addEventListener("click", () => {
+    favoritesOnly = !favoritesOnly;
+    updateFavoriteButtons();
+    filterCards();
+  });
+
+  $("#eskoClearSearch").addEventListener("click", () => {
+    search.value = "";
+    categorySelect.value = "";
+    favoritesOnly = false;
+    $("#eskoSort").value = "default";
+    sortCards();
+    updateFavoriteButtons();
+    filterCards();
+    notify("تم مسح البحث وإعادة عرض الأدوات.");
+  });
+
+  const themeEnabled = safeRead("esko_web_alt_theme", false);
+  document.body.classList.toggle("esko-alt-theme", themeEnabled);
+
+  $("#eskoTheme").addEventListener("click", () => {
+    const enabled = !document.body.classList.contains("esko-alt-theme");
+    document.body.classList.toggle("esko-alt-theme", enabled);
+    safeWrite("esko_web_alt_theme", enabled);
+    notify(enabled ? "تم تفعيل المظهر البديل." : "تم استرجاع المظهر الأساسي.");
+  });
+
+  const motionEnabled = safeRead("esko_web_reduce_motion", false);
+  document.body.classList.toggle("esko-reduce-motion", motionEnabled);
+
+  $("#eskoMotion").addEventListener("click", () => {
+    const enabled = !document.body.classList.contains("esko-reduce-motion");
+    document.body.classList.toggle("esko-reduce-motion", enabled);
+    safeWrite("esko_web_reduce_motion", enabled);
+    notify(enabled ? "تم تقليل الحركة." : "تم تفعيل الحركة.");
+  });
+
+  function copyText(value) {
+    if (navigator.clipboard && window.isSecureContext) {
+      return navigator.clipboard.writeText(value);
+    }
+
+    return new Promise((resolve, reject) => {
+      const input = document.createElement("textarea");
+      input.value = value;
+      input.style.position = "fixed";
+      input.style.opacity = "0";
+      document.body.appendChild(input);
+      input.select();
+      const success = document.execCommand("copy");
+      input.remove();
+      success ? resolve() : reject(new Error("Copy failed"));
+    });
+  }
+
+  $("#eskoCopyLink").addEventListener("click", async () => {
+    try {
+      await copyText(location.href);
+      notify("تم نسخ رابط الموقع.");
+    } catch (_) {
+      notify("تعذر نسخ الرابط من المتصفح.");
+    }
+  });
+
+  $("#eskoShare").addEventListener("click", async () => {
+    const data = {
+      title: document.title,
+      text: "اكتشف منصة ESKO JOKER للأدوات والتطبيقات البرمجية.",
+      url: location.href
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(data);
+      } else {
+        await copyText(data.url);
+        notify("المتصفح لا يدعم المشاركة؛ تم نسخ الرابط.");
+      }
+    } catch (error) {
+      if (error.name !== "AbortError") notify("تعذرت المشاركة حاليًا.");
+    }
+  });
+
+  const visitKey = "esko_web_visit_count";
+  let visits = Number(safeRead(visitKey, 0));
+  if (!Number.isFinite(visits) || visits < 0) visits = 0;
+  visits++;
+  safeWrite(visitKey, visits);
+  $("#eskoVisitCount").textContent = visits;
+
+  const topButton = document.createElement("button");
+  topButton.type = "button";
+  topButton.className = "esko-top-btn";
+  topButton.textContent = "↑";
+  topButton.setAttribute("aria-label", "الرجوع إلى أعلى الصفحة");
+  document.body.appendChild(topButton);
+
+  topButton.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: document.body.classList.contains("esko-reduce-motion")
+        ? "auto" : "smooth"
+    });
+  });
+
+  window.addEventListener("scroll", () => {
+    topButton.classList.toggle("visible", window.scrollY > 350);
+  }, { passive: true });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "/" &&
+        !["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement.tagName)) {
+      event.preventDefault();
+      search.focus();
+    }
+    if (event.key === "Escape" && document.activeElement === search) {
+      search.value = "";
+      filterCards();
+      search.blur();
+    }
+  });
+
+  updateFavoriteButtons();
+  filterCards();
+})();
+
 </script>
 </body>
 </html>
