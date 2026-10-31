@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080812">
+<meta name="description" content="ESKO JOKER - منصة التطبيقات والأدوات البرمجية مفتوحة المصدر">
+<title>ESKO JOKER | OPEN HUB</title>
+
+<style>
+:root {
+  --bg:#080812;
+  --panel:#111326;
+  --panel2:#171a32;
+  --purple:#9b5cff;
+  --cyan:#35e8ff;
+  --text:#f5f4ff;
+  --muted:#a5a6c2;
+  --line:rgba(150,120,255,.2);
+}
+
+* { box-sizing:border-box; }
+
+html {
+  scroll-behavior:smooth;
+}
+
+body {
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(ellipse at 15% 10%,rgba(117,55,255,.18),transparent 40%),
+    radial-gradient(ellipse at 90% 35%,rgba(0,208,255,.10),transparent 35%),
+    var(--bg);
+  color:var(--text);
+  font-family:system-ui,"Segoe UI",Arial,sans-serif;
+  overflow-x:hidden;
+}
+
+#geometry {
+  position:fixed;
+  inset:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+  pointer-events:none;
+  opacity:.65;
+}
+
+.page {
+  position:relative;
+  z-index:1;
+}
+
+.container {
+  width:min(1100px,92%);
+  margin:auto;
+}
+
+header {
+  position:sticky;
+  top:0;
+  z-index:10;
+  background:rgba(8,8,18,.82);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid var(--line);
+}
+
+.nav {
+  min-height:68px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.brand-symbol {
+  width:39px;
+  height:39px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--cyan);
+  color:var(--cyan);
+  border-radius:12px;
+  box-shadow:0 0 20px rgba(53,232,255,.15);
+}
+
+.nav-links {
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+a {
+  color:inherit;
+  text-decoration:none;
+}
+
+.nav-links a {
+  color:var(--muted);
+  font-size:14px;
+}
+
+.nav-links a:hover {
+  color:var(--cyan);
+}
+
+.hero {
+  min-height:510px;
+  padding:95px 0 70px;
+  display:grid;
+  grid-template-columns:1.3fr .7fr;
+  align-items:center;
+  gap:35px;
+}
+
+.eyebrow {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 13px;
+  border:1px solid var(--line);
+  background:rgba(155,92,255,.08);
+  border-radius:30px;
+  color:var(--cyan);
+  font-size:12px;
+}
+
+h1 {
+  font-size:clamp(36px,7vw,65px);
+  line-height:1.13;
+  margin:22px 0 15px;
+}
+
+.gradient {
+  background:linear-gradient(100deg,var(--cyan),var(--purple));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.hero p {
+  color:var(--muted);
+  line-height:2;
+  max-width:600px;
+}
+
+.actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:28px;
+}
+
+.btn {
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:9px;
+  padding:13px 20px;
+  border-radius:12px;
+  font-weight:800;
+  border:1px solid var(--line);
+  transition:.25s;
+}
+
+.btn:hover {
+  transform:translateY(-3px);
+}
+
+.primary {
+  color:#080812;
+  border:0;
+  background:linear-gradient(110deg,var(--cyan),#a58aff);
+  box-shadow:0 8px 30px rgba(53,232,255,.15);
+}
+
+.secondary {
+  color:var(--text);
+  background:rgba(255,255,255,.035);
+}
+
+.visual {
+  position:relative;
+  min-height:280px;
+  display:grid;
+  place-items:center;
+}
+
+.core {
+  width:180px;
+  height:180px;
+  display:grid;
+  place-items:center;
+  font-size:65px;
+  border:1px solid var(--cyan);
+  border-radius:32px;
+  background:linear-gradient(145deg,rgba(155,92,255,.18),rgba(53,232,255,.07));
+  box-shadow:0 0 55px rgba(155,92,255,.18),inset 0 0 35px rgba(53,232,255,.08);
+  animation:float 5s ease-in-out infinite;
+}
+
+.ring {
+  position:absolute;
+  width:270px;
+  height:270px;
+  border:1px dashed rgba(53,232,255,.35);
+  border-radius:50%;
+  animation:rotate 24s linear infinite;
+}
+
+.ring:before,.ring:after {
+  content:"";
+  position:absolute;
+  width:12px;
+  height:12px;
+  background:var(--cyan);
+  border-radius:50%;
+  box-shadow:0 0 18px var(--cyan);
+}
+
+.ring:after {
+  right:35px;
+  bottom:40px;
+  background:var(--purple);
+  box-shadow:0 0 18px var(--purple);
+}
+
+@keyframes rotate {
+  to { transform:rotate(360deg); }
+}
+
+@keyframes float {
+  50% { transform:translateY(-12px); }
+}
+
+section {
+  padding:55px 0;
+}
+
+.section-head {
+  margin-bottom:25px;
+}
+
+.section-head h2 {
+  margin:0 0 10px;
+  font-size:30px;
+}
+
+.section-head p {
+  color:var(--muted);
+  line-height:1.8;
+}
+
+.download-panel {
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:center;
+  gap:20px;
+  padding:26px;
+  border:1px solid rgba(53,232,255,.25);
+  border-radius:20px;
+  background:linear-gradient(120deg,rgba(53,232,255,.08),rgba(155,92,255,.10));
+}
+
+.download-panel h3 {
+  margin:0 0 10px;
+  font-size:22px;
+}
+
+.download-panel p {
+  margin:0;
+  color:var(--muted);
+  line-height:1.9;
+}
+
+.meta {
+  margin-top:12px;
+  color:var(--cyan);
+  font-size:12px;
+}
+
+.notice {
+  margin-top:15px;
+  padding:15px;
+  border-right:3px solid var(--purple);
+  background:rgba(155,92,255,.07);
+  color:var(--muted);
+  border-radius:8px;
+  line-height:1.9;
+  font-size:13px;
+}
+
+.search {
+  width:100%;
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  color:var(--text);
+  background:var(--panel);
+  outline:none;
+  font:inherit;
+  margin-bottom:20px;
+}
+
+.search:focus {
+  border-color:var(--cyan);
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:16px;
+}
+
+.card {
+  position:relative;
+  padding:22px;
+  background:linear-gradient(145deg,rgba(23,26,50,.95),rgba(13,15,31,.95));
+  border:1px solid var(--line);
+  border-radius:18px;
+  transition:.25s;
+  overflow:hidden;
+}
+
+.card:hover {
+  transform:translateY(-5px);
+  border-color:rgba(53,232,255,.5);
+  box-shadow:0 12px 35px rgba(0,0,0,.18);
+}
+
+.card-icon {
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border-radius:14px;
+  background:rgba(155,92,255,.12);
+  font-size:25px;
+  margin-bottom:14px;
+}
+
+.card h3 {
+  margin:0 0 9px;
+}
+
+.card p {
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.8;
+  min-height:50px;
+}
+
+.card .btn {
+  margin-top:12px;
+  width:100%;
+  font-size:13px;
+}
+
+.tag {
+  display:inline-block;
+  color:var(--cyan);
+  font-size:11px;
+  border:1px solid var(--line);
+  padding:5px 9px;
+  border-radius:20px;
+}
+
+.steps {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:13px;
+}
+
+.step {
+  padding:19px;
+  border:1px solid var(--line);
+  background:rgba(17,19,38,.8);
+  border-radius:15px;
+}
+
+.step strong {
+  display:block;
+  color:var(--cyan);
+  margin-bottom:8px;
+}
+
+.step p {
+  color:var(--muted);
+  line-height:1.8;
+  font-size:13px;
+}
+
+footer {
+  margin-top:45px;
+  padding:30px 0;
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  text-align:center;
+  font-size:13px;
+  line-height:2;
+}
+
+[hidden] {
+  display:none !important;
+}
+
+@media(max-width:700px) {
+  .hero {
+    grid-template-columns:1fr;
+    padding-top:65px;
+  }
+  .visual {
+    min-height:230px;
+  }
+  .core {
+    width:140px;
+    height:140px;
+  }
+  .ring {
+    width:220px;
+    height:220px;
+  }
+  .download-panel {
+    grid-template-columns:1fr;
+  }
+  .grid {
+    grid-template-columns:1fr;
+  }
+  .steps {
+    grid-template-columns:1fr;
+  }
+  .nav-links {
+    gap:10px;
+    font-size:12px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation:none !important;
+    scroll-behavior:auto !important;
+    transition:none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<canvas id="geometry" aria-hidden="true"></canvas>
+
+<div class="page">
+
+<header>
+  <div class="container nav">
+    <div class="brand">
+      <div class="brand-symbol">♛</div>
+      <span>ESKO JOKER</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="#home">الرئيسية</a>
+      <a href="#install">التطبيق</a>
+      <a href="#tools">الأدوات</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+
+<section class="hero" id="home">
+  <div>
+    <span class="eyebrow">🃏 ESKO OPEN SOURCE HUB</span>
+
+    <h1>
+      عالمك البرمجي<br>
+      <span class="gradient">في مكان واحد</span>
+    </h1>
+
+    <p>
+      منصة ESKO JOKER للتطبيقات والأدوات البرمجية.
+      استكشف المصادر المفتوحة، وتعرّف على الأدوات،
+      ونزّل تطبيق ESKO من مصدره الرسمي.
+    </p>
+
+    <div class="actions">
+      <a class="btn primary" href="#install">⬇ تثبيت ESKO</a>
+      <a class="btn secondary" href="#tools">استكشاف الأدوات</a>
+    </div>
+  </div>
+
+  <div class="visual" aria-hidden="true">
+    <div class="ring"></div>
+    <div class="core">🃏</div>
+  </div>
+</section>
+
+<section id="install">
+  <div class="section-head">
+    <h2>♛ تطبيق <span class="gradient">ESKO OPEN HUB</span></h2>
+    <p>الإصدار الأول من منظومة ESKO.</p>
+  </div>
+
+  <div class="download-panel">
+    <div>
+      <h3>ESKO OPEN HUB V1.0.0</h3>
+      <p>
+        نزّل التطبيق على جهاز Android من خلال زر التنزيل.
+        بعد اكتمال التنزيل، افتح التطبيق ووافق على التثبيت من شاشة Android.
+      </p>
+      <div class="meta">الإصدار 1.0.0 · Android APK · المصدر: ESKO JOKER</div>
+    </div>
+
+    <a class="btn primary"
+       href="./downloads/ESKO-OPEN-HUB-V1.apk"
+       download="ESKO-OPEN-HUB-V1.apk">
+       ⬇ تنزيل وتثبيت التطبيق
+    </a>
+  </div>
+
+  <div class="notice">
+    تنبيه: الموقع يبدأ تنزيل ملف التطبيق، وبعدها أندرويد يعرض شاشة التثبيت
+    الرسمية. لا يمكن لموقع عادي تثبيت APK بصمت أو تجاوز موافقة المستخدم.
+    قد تحتاج للسماح للمتصفح بتثبيت التطبيقات التي نزّلها.
+  </div>
+
+  <p>
+    <a class="tag" href="./downloads/ESKO-OPEN-HUB-V1.apk.sha256">
+      عرض بصمة SHA-256
+    </a>
+  </p>
+</section>
+
+<section id="tools">
+  <div class="section-head">
+    <h2>🧰 مكتبة <span class="gradient">الأدوات</span></h2>
+    <p>مجموعة تطبيقات مفتوحة المصدر من صفحاتها الرسمية على F-Droid.</p>
+  </div>
+
+  <input
+    id="toolSearch"
+    class="search"
+    type="search"
+    placeholder="ابحث عن أداة..."
+    aria-label="البحث عن أداة"
+  >
+
+  <div class="grid" id="toolGrid">
+
+    <article class="card" data-search="aegis authenticator الحماية التحقق">
+      <div class="card-icon">🔐</div>
+      <span class="tag">الحسابات والحماية</span>
+      <h3>Aegis Authenticator</h3>
+      <p>
+        تطبيق مفتوح المصدر لإدارة رموز التحقق بخطوتين وحفظها في خزنة محمية.
+      </p>
+      <a class="btn secondary"
+         href="https://f-droid.org/en/packages/com.beemdevelopment.aegis/"
+         target="_blank" rel="noopener noreferrer">
+         المصدر الرسمي
+      </a>
+    </article>
+
+    <article class="card" data-search="markor notes editor markdown كتابة">
+      <div class="card-icon">📝</div>
+      <span class="tag">الكتابة والبرمجة</span>
+      <h3>Markor</h3>
+      <p>
+        محرر نصوص وملاحظات يدعم Markdown والعمل دون اتصال بالإنترنت.
+      </p>
+      <a class="btn secondary"
+         href="https://f-droid.org/packages/net.gsantner.markor/"
+         target="_blank" rel="noopener noreferrer">
+         المصدر الرسمي
+      </a>
+    </article>
+
+    <article class="card" data-search="vlc media player video audio مشغل">
+      <div class="card-icon">🎬</div>
+      <span class="tag">الوسائط</span>
+      <h3>VLC</h3>
+      <p>
+        مشغل مفتوح المصدر لتشغيل ملفات الصوت والفيديو بصيغ متعددة.
+      </p>
+      <a class="btn secondary"
+         href="https://f-droid.org/en/packages/org.videolan.vlc/"
+         target="_blank" rel="noopener noreferrer">
+         المصدر الرسمي
+      </a>
+    </article>
+
+    <article class="card" data-search="antennapod podcast audio podcasts">
+      <div class="card-icon">🎧</div>
+      <span class="tag">الصوتيات</span>
+      <h3>AntennaPod</h3>
+      <p>
+        تطبيق مفتوح المصدر لإدارة وتشغيل حلقات البودكاست.
+      </p>
+      <a class="btn secondary"
+         href="https://f-droid.org/en/packages/de.danoeh.antennapod/"
+         target="_blank" rel="noopener noreferrer">
+         المصدر الرسمي
+      </a>
+    </article>
+
+  </div>
+</section>
+
+<section>
+  <div class="section-head">
+    <h2>طريقة التثبيت</h2>
+    <p>ثلاث خطوات بسيطة لتثبيت التطبيقات على جهازك.</p>
+  </div>
+
+  <div class="steps">
+    <div class="step">
+      <strong>01 — اختيار التطبيق</strong>
+      <p>افتح صفحة التطبيق من زر المصدر الرسمي.</p>
+    </div>
+
+    <div class="step">
+      <strong>02 — التنزيل</strong>
+      <p>نزّل التطبيق من المصدر، أو استخدم طريقة التثبيت التي يوفرها المصدر.</p>
+    </div>
+
+    <div class="step">
+      <strong>03 — الموافقة</strong>
+      <p>راجع شاشة Android ووافق على التثبيت بنفسك.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <strong>🃏 ESKO JOKER | OPEN SOURCE HUB</strong>
+    <div>منظومة ESKO البرمجية · جميع الحقوق محفوظة لأصحاب التطبيقات الأصلية</div>
+    <div>© <span id="year"></span> ESKO JOKER</div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+(() => {
+  const canvas = document.getElementById("geometry");
+  const ctx = canvas.getContext("2d");
+
+  if (ctx) {
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    let width = 0;
+    let height = 0;
+    let frame = 0;
+
+    const points = Array.from({length:22}, () => ({
+      x:Math.random(),
+      y:Math.random(),
+      vx:(Math.random()-.5)*.00035,
+      vy:(Math.random()-.5)*.00035
+    }));
+
+    function resize() {
+      const ratio = Math.min(window.devicePixelRatio || 1, 1.3);
+      width = window.innerWidth;
+      height = window.innerHeight;
+
+      canvas.width = Math.round(width * ratio);
+      canvas.height = Math.round(height * ratio);
+
+      ctx.setTransform(ratio,0,0,ratio,0,0);
+      draw();
+    }
+
+    function draw() {
+      ctx.clearRect(0,0,width,height);
+
+      for (let i=0; i<points.length; i++) {
+        const p = points[i];
+        const x = p.x * width;
+        const y = p.y * height;
+
+        ctx.beginPath();
+        ctx.arc(x,y,2,0,Math.PI*2);
+        ctx.fillStyle = "#35e8ff";
+        ctx.fill();
+
+        for (let j=i+1; j<points.length; j++) {
+          const q = points[j];
+          const qx = q.x * width;
+          const qy = q.y * height;
+          const dx = x-qx;
+          const dy = y-qy;
+          const distance = Math.sqrt(dx*dx+dy*dy);
+
+          if (distance < 145) {
+            ctx.beginPath();
+            ctx.moveTo(x,y);
+            ctx.lineTo(qx,qy);
+            ctx.strokeStyle = "rgba(135,100,255," +
+              (1-distance/145)*.22 + ")";
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+
+      ctx.strokeStyle = "rgba(53,232,255,.09)";
+      ctx.lineWidth = 1;
+
+      const cx = width*.78;
+      const cy = height*.32;
+
+      ctx.beginPath();
+      ctx.arc(cx,cy,65,0,Math.PI*2);
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(cx,cy,95,0,Math.PI*2);
+      ctx.stroke();
+    }
+
+    function animate() {
+      for (const p of points) {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > 1) p.vx *= -1;
+        if (p.y < 0 || p.y > 1) p.vy *= -1;
+      }
+
+      draw();
+      frame = requestAnimationFrame(animate);
+    }
+
+    window.addEventListener("resize",resize,{passive:true});
+    resize();
+
+    if (!reduced) {
+      animate();
+    } else if (frame) {
+      cancelAnimationFrame(frame);
+    }
+  }
+
+  const search = document.getElementById("toolSearch");
+
+  search.addEventListener("input", () => {
+    const query = search.value.trim().toLowerCase();
+
+    document.querySelectorAll("#toolGrid .card").forEach(card => {
+      const text = (card.dataset.search || "").toLowerCase();
+      card.hidden = !text.includes(query);
+    });
+  });
+
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
