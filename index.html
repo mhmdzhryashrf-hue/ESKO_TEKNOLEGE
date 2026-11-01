@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#080812">
 <meta name="description" content="ESKO JOKER - منصة التطبيقات والأدوات البرمجية مفتوحة المصدر">
-<title>ESKO JOKER | OPEN HUB</title>
+<title>♕🛠آ̀́ي̀́س̀́ك̀́ۈ̀́🛠♕ | ESKO JOKER V3.0</title>
 
 <style>
 :root {
@@ -575,9 +575,180 @@ body.esko-reduce-motion *::after {
 }
 
 </style>
+<!-- ESKO_V3_SITE_STYLES --><style>
+/* ---------- ESKO V3 MOTION + COMPONENTS ---------- */
+:root{--esko-v3-bg:#090815;--esko-v3-panel:rgba(23,19,43,.88);--esko-v3-line:rgba(105,220,255,.32);--esko-v3-cyan:#66e7ff;--esko-v3-purple:#a98bff;--esko-v3-text:#f6f3ff;}
+.hub-page.active{animation:eskoV3PageIn .52s cubic-bezier(.2,.8,.2,1) both;}
+@keyframes eskoV3PageIn{0%{opacity:0;transform:translateY(15px) scale(.965);filter:blur(5px)}65%{opacity:1;filter:blur(0)}100%{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
+.esko-v3-splash{position:fixed;inset:0;z-index:2147483000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;overflow:hidden;background:radial-gradient(circle at 50% 42%,#30205b 0,#111026 43%,#070711 100%);color:var(--esko-v3-cyan);opacity:1;transition:opacity .6s ease,visibility .6s ease;}
+.esko-v3-splash:before,.esko-v3-splash:after{content:"";position:absolute;width:70vw;height:70vw;max-width:520px;max-height:520px;border:1px solid rgba(102,231,255,.12);transform:rotate(45deg);animation:eskoV3Square 8s linear infinite;}
+.esko-v3-splash:after{width:52vw;height:52vw;border-color:rgba(169,139,255,.18);animation-direction:reverse;animation-duration:11s;}
+.esko-v3-splash.is-leaving{opacity:0;visibility:hidden;pointer-events:none;}
+.esko-v3-splash-mark{width:min(42vw,220px);height:auto;z-index:1;filter:drop-shadow(0 0 14px rgba(102,231,255,.6));animation:eskoV3Mark 2.2s cubic-bezier(.2,.9,.2,1) both,eskoV3Glow 2s ease-in-out 2.2s infinite alternate;}
+.esko-v3-splash-brand{z-index:1;color:#fff;font-size:clamp(20px,5vw,34px);font-weight:900;letter-spacing:.7px;text-align:center;text-shadow:0 0 18px rgba(169,139,255,.8);animation:eskoV3Mark 1.5s .25s both;}
+.esko-v3-splash-line{z-index:1;width:min(72vw,340px);height:2px;background:rgba(255,255,255,.12);overflow:hidden;}
+.esko-v3-splash-line i,.esko-v3-site-underline i{display:block;width:35%;height:100%;background:linear-gradient(90deg,transparent,var(--esko-v3-cyan),#fff,var(--esko-v3-purple),transparent);box-shadow:0 0 14px var(--esko-v3-cyan);animation:eskoV3Line 2s ease-in-out infinite;}
+.esko-v3-splash-subtitle{z-index:1;color:#dcd5ff;font-weight:700;letter-spacing:4px;animation:eskoV3FadeUp 1.2s .6s both;}
+.esko-v3-splash-version{z-index:1;color:rgba(220,213,255,.55);font-size:10px;letter-spacing:3px;}
+.esko-v3-splash-orbit{position:absolute;width:min(82vw,430px);height:min(82vw,430px);border:1px solid rgba(169,139,255,.2);transform:rotate(25deg);animation:eskoV3Square 13s linear infinite;}
+.orbit-two{width:min(65vw,330px);height:min(65vw,330px);border-color:rgba(102,231,255,.22);transform:rotate(70deg);animation-duration:9s;animation-direction:reverse;}
+@keyframes eskoV3Square{to{rotate:360deg}}
+@keyframes eskoV3Mark{0%{opacity:0;transform:scale(.25) rotate(-18deg)}70%{opacity:1;transform:scale(1.08) rotate(2deg)}100%{opacity:1;transform:scale(1) rotate(0)}}
+@keyframes eskoV3Glow{to{filter:drop-shadow(0 0 27px rgba(169,139,255,.9))}}
+@keyframes eskoV3Line{0%{transform:translateX(-130%)}100%{transform:translateX(320%)}}
+@keyframes eskoV3FadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.esko-v3-shortcuts{display:flex;gap:8px;overflow-x:auto;padding:10px 12px;margin:8px 0 16px;scrollbar-width:thin;white-space:nowrap;}
+.esko-v3-shortcuts button,.esko-v3-site-nav button{flex:0 0 auto;border:1px solid var(--esko-v3-line);border-radius:999px;background:rgba(20,24,45,.88);color:inherit;padding:10px 14px;font:inherit;font-weight:700;}
+.esko-v3-shortcuts button:active,.esko-v3-site-nav button.active{background:linear-gradient(120deg,rgba(104,68,179,.8),rgba(22,138,163,.55));border-color:var(--esko-v3-cyan);}
+.esko-v3-page-head{margin:10px 0 18px;padding:16px;border:1px solid var(--esko-v3-line);border-radius:20px;background:linear-gradient(135deg,rgba(45,31,79,.72),rgba(13,24,42,.72));}
+.esko-v3-page-head h2{margin:8px 0;font-size:clamp(22px,5vw,30px);}
+.esko-v3-page-head p,.esko-v3-muted{opacity:.75;line-height:1.8;}
+.esko-v3-eyebrow,.esko-v3-tag{color:var(--esko-v3-cyan);font-size:11px;letter-spacing:1.5px;font-weight:800;}
+.esko-v3-grid,.esko-v3-source-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:12px;}
+.esko-v3-panel,.esko-v3-source-card{min-width:0;padding:16px;border:1px solid var(--esko-v3-line);border-radius:18px;background:linear-gradient(145deg,rgba(31,25,57,.94),rgba(11,23,37,.94));box-shadow:0 10px 30px rgba(0,0,0,.18);}
+.esko-v3-panel h3,.esko-v3-source-card h3{margin:8px 0;}
+.esko-v3-command{display:block;overflow-wrap:anywhere;direction:ltr;text-align:left;padding:12px;margin:10px 0;border-radius:10px;background:#080b17;color:#8deaff;border:1px solid rgba(102,231,255,.18);}
+.esko-v3-action{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid rgba(102,231,255,.5);border-radius:12px;padding:11px 16px;margin:5px 0;background:linear-gradient(110deg,#493078,#12566a);color:#fff;text-decoration:none;font:inherit;font-weight:800;cursor:pointer;}
+.esko-v3-action.secondary{background:rgba(65,49,91,.7);}
+.esko-v3-notice,.esko-v3-site-note{margin:14px 0;padding:13px;border-inline-start:3px solid var(--esko-v3-cyan);background:rgba(35,29,61,.65);border-radius:10px;line-height:1.8;}
+.esko-v3-search-form{display:flex;gap:8px;align-items:stretch;margin:14px 0;}
+.esko-v3-field,.esko-v3-search-form input{width:100%;min-width:0;box-sizing:border-box;padding:13px 14px;border:1px solid var(--esko-v3-line);border-radius:12px;background:rgba(8,12,25,.95);color:inherit;font:inherit;}
+.esko-v3-browser-tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin:10px 0;font-size:12px;opacity:.8;}
+.esko-v3-browser-frame{display:block;width:100%;height:min(65vh,650px);min-height:420px;border:1px solid var(--esko-v3-line);border-radius:15px;background:#fff;}
+.esko-v3-source-top{display:flex;justify-content:space-between;align-items:center;}
+.esko-v3-source-icon{font-size:24px;color:var(--esko-v3-cyan);}
+.esko-v3-source-tag{font-size:9px;color:var(--esko-v3-purple);letter-spacing:1px;}
+.esko-v3-notepad{display:block;box-sizing:border-box;width:100%;min-height:42vh;padding:16px;border:1px solid var(--esko-v3-line);border-radius:16px;background:rgba(8,12,25,.96);color:inherit;font:inherit;line-height:1.9;resize:vertical;}
+.esko-v3-note-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:12px 0;}
+.support-action{margin-top:10px;}
+.esko-v3-site{max-width:1120px;margin:0 auto;padding:18px 14px 40px;color:var(--esko-v3-text);background:radial-gradient(ellipse at 50% 0,rgba(80,49,129,.22),transparent 55%);}
+.esko-v3-site-head{text-align:center;padding:30px 10px 20px;}
+.esko-v3-site-head h1{font-size:clamp(24px,6vw,42px);margin:12px 0;text-shadow:0 0 24px rgba(169,139,255,.35);}
+.esko-v3-site-head p{opacity:.78;line-height:1.8;}
+.esko-v3-site-underline{width:min(75%,360px);height:2px;background:rgba(255,255,255,.12);margin:18px auto;overflow:hidden;}
+.esko-v3-site-nav{display:flex;gap:8px;overflow-x:auto;padding:10px 0;position:sticky;top:0;z-index:10;background:rgba(9,8,21,.92);backdrop-filter:blur(12px);}
+.esko-v3-site-page{display:none;padding:18px 0;animation:eskoV3PageIn .5s both;}
+.esko-v3-site-page.active{display:block;}
+.esko-v3-site-page h2{font-size:clamp(22px,5vw,32px);}
+.esko-v3-site-hero{padding:24px;border-radius:22px;border:1px solid var(--esko-v3-line);background:linear-gradient(135deg,rgba(60,39,106,.82),rgba(12,61,76,.65));}
+.esko-v3-site-hero span{color:var(--esko-v3-cyan);font-size:11px;letter-spacing:2px;}
+.esko-v3-site-hero h2{font-size:clamp(27px,6vw,48px);margin:12px 0;}
+.esko-v3-site-tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:16px 0;}
+.esko-v3-site-tiles>button,.esko-v3-site-tiles>div{display:flex;flex-direction:column;gap:10px;text-align:start;padding:18px;border-radius:17px;border:1px solid var(--esko-v3-line);background:var(--esko-v3-panel);color:inherit;font:inherit;}
+.esko-v3-site-tiles>button{cursor:pointer;font-size:24px;}
+.esko-v3-site-tiles b{font-size:16px;}
+.esko-v3-site-tiles small{font-size:12px;opacity:.7;}
+.esko-v3-site-foot{text-align:center;padding:25px 0 5px;border-top:1px solid var(--esko-v3-line);opacity:.55;font-size:11px;letter-spacing:2px;}
+@media(max-width:520px){.esko-v3-search-form{flex-direction:column}.esko-v3-browser-frame{min-height:360px;height:58vh}.esko-v3-page-head{padding:13px}.esko-v3-site{padding-inline:10px}}
+@media(prefers-reduced-motion:reduce){.hub-page.active,.esko-v3-site-page{animation:none!important}.esko-v3-splash-mark,.esko-v3-splash:before,.esko-v3-splash:after,.esko-v3-splash-orbit,.esko-v3-splash-line i,.esko-v3-site-underline i{animation:none!important}}
+</style>
+<link rel="stylesheet" href="esko-v31-tools.css">
+<!-- ESKO_V32_ASSETS_START -->
+<link rel="stylesheet" href="esko-v32-hub.css">
+<!-- ESKO_V32_ASSETS_END -->
 </head>
 
 <body>
+<!-- ESKO_V3_8S_INTRO -->
+<div id="eskoV3SplashSite" class="esko-v3-splash" role="status" aria-label="♕🛠آ̀́ي̀́س̀́ك̀́ۈ̀́🛠♕">
+  <div class="esko-v3-splash-orbit orbit-one"></div>
+  <div class="esko-v3-splash-orbit orbit-two"></div>
+  <svg class="esko-v3-splash-mark" viewBox="0 0 240 180" aria-hidden="true">
+    <polygon points="120,8 218,86 120,172 22,86" fill="none" stroke="currentColor" stroke-width="2.2"/>
+    <polygon points="120,28 194,86 120,150 46,86" fill="none" stroke="currentColor" stroke-width="1.2" opacity=".7"/>
+    <path d="M22 86 H218 M120 8 V172 M46 86 L194 86" fill="none" stroke="currentColor" stroke-width="1" opacity=".45"/>
+    <circle cx="120" cy="86" r="31" fill="none" stroke="currentColor" stroke-width="2.3"/>
+    <path d="M103 86 L116 99 L140 70" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <div class="esko-v3-splash-brand">♕🛠آ̀́ي̀́س̀́ك̀́ۈ̀́🛠♕</div>
+  <div class="esko-v3-splash-line"><i></i></div>
+  <div class="esko-v3-splash-subtitle">منظومة إيسكو</div>
+  <div class="esko-v3-splash-version">OPEN HUB • V3.0</div>
+</div>
+<!-- /ESKO_V3_8S_INTRO -->
+<!-- ESKO_V3_SITE_HUB -->
+<div class="esko-v3-site" id="eskoV3SiteHub">
+  <header class="esko-v3-site-head"><span class="esko-v3-eyebrow">OFFICIAL DIGITAL ECOSYSTEM • V3.0</span><h1>♕🛠آ̀́ي̀́س̀́ك̀́ۈ̀́🛠♕</h1><p>منظومة إيسكو — أدوات، بحث ويب، مصادر تطبيقات، وملاحظات محلية.</p><div class="esko-v3-site-underline"><i></i></div></header>
+  <nav class="esko-v3-site-nav" aria-label="أقسام موقع ESKO">
+    <button class="active" type="button" data-site-page="home" onclick="eskoV3SitePage('home')">الرئيسية</button>
+    <button type="button" data-site-page="trimux" onclick="eskoV3SitePage('trimux')">♕ تريمكس ♕</button>
+    <button type="button" data-site-page="web" onclick="eskoV3SitePage('web')">بحث الويب</button>
+    <button type="button" data-site-page="downloads" onclick="eskoV3SitePage('downloads')">تنزيل التطبيقات</button>
+    <button type="button" data-site-page="notes" onclick="eskoV3SitePage('notes')">مذكرتي</button>
+  </nav>
+  <section class="esko-v3-site-page active" data-site-v3-page="home"><div class="esko-v3-site-hero"><span>ESKO JOKER • OPEN HUB</span><h2>التقنية تبدأ بفكرة.</h2><p>مساحة واحدة للوصول إلى أدوات ESKO ومصادر الويب وملاحظاتك.</p></div><div class="esko-v3-site-tiles"><button onclick="eskoV3SitePage('web')">⌕<b>بحث الويب</b><small>تصفّح نتائج البحث</small></button><button onclick="eskoV3SitePage('downloads')">⇩<b>تنزيل التطبيقات</b><small>13 مصدرًا للتطبيقات</small></button><button onclick="eskoV3SitePage('notes')">▤<b>مذكرتي</b><small>حفظ محلي في المتصفح</small></button><button onclick="eskoV3SitePage('trimux')">♕<b>تريمكس</b><small>مساحة Termux</small></button></div></section>
+  <section class="esko-v3-site-page" data-site-v3-page="trimux"><h2>♕ تريمكس ♕</h2><p>أوامر إرشادية أساسية لبيئة Termux.</p><div class="esko-v3-site-tiles"><div><b>تحديث الحزم</b><code>pkg update && pkg upgrade</code></div><div><b>أدوات التطوير</b><code>pkg install python nodejs git</code></div><div><b>صلاحية الملفات</b><code>termux-setup-storage</code></div></div><p class="esko-v3-site-note">راجع أي أمر قبل تشغيله، ولا تستخدم أوامر مجهولة المصدر.</p></section>
+  <section class="esko-v3-site-page" data-site-v3-page="web"><h2>بحث الويب</h2><form class="esko-v3-search-form" onsubmit="return eskoV3SiteSearch(event)"><input id="eskoV3SiteQuery" type="search" maxlength="300" required placeholder="ابحث في الويب..."><button class="esko-v3-action" type="submit">بحث</button></form><p><a id="eskoV3SiteOpenSearch" href="https://duckduckgo.com/" target="_blank" rel="noopener noreferrer">فتح البحث في المتصفح</a></p><iframe id="eskoV3SiteFrame" class="esko-v3-browser-frame" title="نتائج بحث الويب" loading="lazy" referrerpolicy="no-referrer" src="about:blank"></iframe></section>
+  <section class="esko-v3-site-page" data-site-v3-page="downloads"><h2>تنزيل التطبيقات</h2><p>13 مصدرًا للبحث عن التطبيقات.</p><input id="eskoV3SiteFilter" class="esko-v3-field" type="search" placeholder="ابحث عن مصدر..."><div class="esko-v3-source-grid" id="eskoV3SiteSources"><article class="esko-v3-source-card" data-source-name="f-droid">
+  <div class="esko-v3-source-top"><span class="esko-v3-source-icon">⬡</span><span class="esko-v3-source-tag">ANDROID</span></div>
+  <h3>F-Droid</h3><p class="esko-v3-muted">مستودع تطبيقات مفتوحة المصدر</p><p>مصدر مفتوح المصدر مع فحص توقيعات المستودع.</p>
+  <a class="esko-v3-action" href="https://f-droid.org/en/packages/" target="_blank" rel="noopener noreferrer">فتح المصدر <span aria-hidden="true">↗</span></a>
+</article>
+<article class="esko-v3-source-card" data-source-name="izzyondroid">
+  <div class="esko-v3-source-top"><span class="esko-v3-source-icon">⬡</span><span class="esko-v3-source-tag">ANDROID</span></div>
+  <h3>IzzyOnDroid</h3><p class="esko-v3-muted">مستودع تطبيقات أندرويد</p><p>مستودع إضافي لتطبيقات يوفّر معلومات عن مصادر البناء.</p>
+  <a class="esko-v3-action" href="https://apt.izzysoft.de/fdroid/index/apk" target="_blank" rel="noopener noreferrer">فتح المصدر <span aria-hidden="true">↗</span></a>
+</article>
+<article class="esko-v3-source-card" data-source-name="github releases">
+  <div class="esko-v3-source-top"><span class="esko-v3-source-icon">⬡</span><span class="esko-v3-source-tag">ANDROID</span></div>
+  <h3>GitHub Releases</h3><p class="esko-v3-muted">إصدارات المطورين الرسمية</p><p>ابحث عن صفحة Releases الرسمية للمطور وتأكد من اسم الناشر.</p>
+  <a class="esko-v3-action" href="https://github.com/topics/android-app" target="_blank" rel="noopener noreferrer">فتح المصدر <span aria-hidden="true">↗</span></a>
+</article>
+<article class="esko-v3-source-card" data-source-name="uptodown">
+  <div class="esko-v3-source-top"><span class="esko-v3-source-icon">⬡</span><span class="esko-v3-source-tag">ANDROID</span></div>
+  <h3>Uptodown</h3><p class="esko-v3-muted">كتالوج تطبيقات أندرويد</p><p>راجع اسم المطور وإصدار التطبيق قبل التنزيل.</p>
+  <a class="esko-v3-action" href="https://en.uptodown.com/android" target="_blank" rel="noopener noreferrer">فتح المصدر <span aria-hidden="true">↗</span></a>
+</article>
+<article class="esko-v3-source-card" data-source-name="apkmirror">
+  <div class="esko-v3-source-top"><span class="esko-v3-source-icon">⬡</span><span class="esko-v3-source-tag">ANDROID</span></div>
+  <h3>APKMirror</h3><p class="esko-v3-muted">أرشيف ملفات تطبيقات أندرويد</p><p>تحقق من التوقيع والمتغير المناسب لجهازك.</p>
+  <a class="esko-v3-action" href="https://www.apkmirror.com/" target="_blank" rel="noopener noreferrer">فتح المصدر <span aria-hidden="true">↗</span></a>
+</article>
+<article class="esko-v3-source-card" data-source-name="apkpure">
+  <div class="esko-v3-source-top"><span class="esko-v3-source-icon">⬡</span><span class="esko-v3-source-tag">ANDROID</span></div>
+  <h3>APKPure</h3><p class="esko-v3-muted">كتالوج تطبيقات أندرويد</p><p>راجع صفحة التطبيق ومصدره قبل التثبيت.</p>
+  <a class="esko-v3-action" href="https://apkpure.com/" target="_blank" rel="noopener noreferrer">فتح المصدر <span aria-hidden="true">↗</span></a>
+</article>
+<article class="esko-v3-source-card" data-source-name="aptoide">
+  <div class="esko-v3-source-top"><span class="esko-v3-source-icon">⬡</span><span class="esko-v3-source-tag">ANDROID</span></div>
+  <h3>Aptoide</h3><p class="esko-v3-muted">متجر تطبيقات بديل</p><p>تأكد من موثوقية المتجر والناشر قبل التثبيت.</p>
+  <a class="esko-v3-action" href="https://en.aptoide.com/" target="_blank" rel="noopener noreferrer">فتح المصدر <span aria-hidden="true">↗</span></a>
+</article>
+<article class="esko-v3-source-card" data-source-name="apkcombo">
+  <div class="esko-v3-source-top"><span class="esko-v3-source-icon">⬡</span><span class="esko-v3-source-tag">ANDROID</span></div>
+  <h3>APKCombo</h3><p class="esko-v3-muted">محرك بحث لحزم أندرويد</p><p>قارن اسم الحزمة والإصدار والمعمارية.</p>
+  <a class="esko-v3-action" href="https://apkcombo.com/" target="_blank" rel="noopener noreferrer">فتح المصدر <span aria-hidden="true">↗</span></a>
+</article>
+<article class="esko-v3-source-card" data-source-name="fossdroid">
+  <div class="esko-v3-source-top"><span class="esko-v3-source-icon">⬡</span><span class="esko-v3-source-tag">ANDROID</span></div>
+  <h3>Fossdroid</h3><p class="esko-v3-muted">دليل تطبيقات حرة ومفتوحة</p><p>دليل لاكتشاف التطبيقات الحرة؛ راجع المصدر الأصلي.</p>
+  <a class="esko-v3-action" href="https://fossdroid.com/" target="_blank" rel="noopener noreferrer">فتح المصدر <span aria-hidden="true">↗</span></a>
+</article>
+<article class="esko-v3-source-card" data-source-name="huawei appgallery">
+  <div class="esko-v3-source-top"><span class="esko-v3-source-icon">⬡</span><span class="esko-v3-source-tag">ANDROID</span></div>
+  <h3>Huawei AppGallery</h3><p class="esko-v3-muted">متجر هواوي الرسمي</p><p>قد تختلف الإتاحة حسب الجهاز والمنطقة.</p>
+  <a class="esko-v3-action" href="https://appgallery.huawei.com/" target="_blank" rel="noopener noreferrer">فتح المصدر <span aria-hidden="true">↗</span></a>
+</article>
+<article class="esko-v3-source-card" data-source-name="samsung galaxy store">
+  <div class="esko-v3-source-top"><span class="esko-v3-source-icon">⬡</span><span class="esko-v3-source-tag">ANDROID</span></div>
+  <h3>Samsung Galaxy Store</h3><p class="esko-v3-muted">متجر سامسونج الرسمي</p><p>قد يتطلب جهازًا أو حسابًا مدعومًا.</p>
+  <a class="esko-v3-action" href="https://galaxystore.samsung.com/" target="_blank" rel="noopener noreferrer">فتح المصدر <span aria-hidden="true">↗</span></a>
+</article>
+<article class="esko-v3-source-card" data-source-name="amazon appstore">
+  <div class="esko-v3-source-top"><span class="esko-v3-source-icon">⬡</span><span class="esko-v3-source-tag">ANDROID</span></div>
+  <h3>Amazon Appstore</h3><p class="esko-v3-muted">متجر تطبيقات أمازون</p><p>قد يطلب تسجيل دخول حسب البلد والتطبيق.</p>
+  <a class="esko-v3-action" href="https://www.amazon.com/gp/mas/get/android" target="_blank" rel="noopener noreferrer">فتح المصدر <span aria-hidden="true">↗</span></a>
+</article>
+<article class="esko-v3-source-card" data-source-name="sourceforge">
+  <div class="esko-v3-source-top"><span class="esko-v3-source-icon">⬡</span><span class="esko-v3-source-tag">ANDROID</span></div>
+  <h3>SourceForge</h3><p class="esko-v3-muted">استضافة مشاريع وبرامج</p><p>استخدم صفحة المشروع الرسمية وتحقق من ملفات الإصدار.</p>
+  <a class="esko-v3-action" href="https://sourceforge.net/directory/mobile/" target="_blank" rel="noopener noreferrer">فتح المصدر <span aria-hidden="true">↗</span></a>
+</article></div><p class="esko-v3-site-note">قد تختلف شروط الدخول والتنزيل حسب المصدر والبلد والتطبيق. فضّل صفحة المطور الرسمية، وتحقق من التوقيع واسم الحزمة ولا تثبّت ملفات مجهولة.</p></section>
+  <section class="esko-v3-site-page" data-site-v3-page="notes"><h2>مذكرتي الخاصة</h2><p>تُحفظ الملاحظات محليًا في المتصفح الحالي فقط.</p><textarea id="eskoV3SiteNote" class="esko-v3-notepad" maxlength="30000" placeholder="اكتب ملاحظاتك..."></textarea><div class="esko-v3-note-row"><span id="eskoV3SiteNoteStatus">الحفظ تلقائي</span><button class="esko-v3-action secondary" onclick="eskoV3SiteClearNote()" type="button">مسح المذكرة</button></div><a class="esko-v3-action support-action" href="https://wa.me/201128530613" target="_blank" rel="noopener noreferrer">التواصل مع دعم ESKO عبر واتساب</a><p class="esko-v3-site-note">الرسالة لا تُرسل تلقائيًا؛ راجعها ثم أرسلها بنفسك داخل واتساب. المذكرة محلية وغير مشفّرة؛ لا تكتب فيها كلمات مرور أو بيانات حساسة.</p></section>
+  <footer class="esko-v3-site-foot">ESKO JOKER • OPEN HUB V3.0</footer>
+</div>
+
+
 <canvas id="geometry" aria-hidden="true"></canvas>
 
 <div class="page">
@@ -593,6 +764,7 @@ body.esko-reduce-motion *::after {
       <a href="#home">الرئيسية</a>
       <a href="#install">التطبيق</a>
       <a href="#tools">الأدوات</a>
+      <a href="#v45-app">تطبيق V4.5</a>
     </nav>
   </div>
 </header>
@@ -662,6 +834,23 @@ body.esko-reduce-motion *::after {
        بصمة SHA-256 للتحقق من الملف
     </a>
   </p>
+</section>
+
+
+<section id="v45-app">
+  <div class="section-head">
+    <h2>♕ تطبيق <span class="gradient">ESKO V4.5</span></h2>
+    <p>افتح نسخة الويب الجديدة مباشرة من موقع ESKO، ويمكن إضافتها إلى الشاشة الرئيسية.</p>
+  </div>
+  <div class="download-panel">
+    <div>
+      <h3>ESKO OPEN HUB V4.5 WEB</h3>
+      <p>واجهة ESKO الجديدة: إعدادات وثيمات متحركة وملاحظات وذاكرة محلية وقسم Termux تعليمي.</p>
+      <div class="meta">V4.5 WEB · HTTPS · لا يحتاج تشغيل Termux</div>
+    </div>
+    <a class="btn primary" href="./app/v4.5/">🚀 فتح التطبيق</a>
+  </div>
+  <div class="notice">الحسابات المشتركة والمحادثات والفحص الشبكي تحتاج خدمة خلفية آمنة، وهي غير مفعّلة في نسخة الويب الثابتة. ملف APK V3.2 الأصلي يظل منفصلًا.</div>
 </section>
 
 <section id="tools">
@@ -1211,5 +1400,37 @@ body.esko-reduce-motion *::after {
 })();
 
 </script>
+
+<script>
+/* ESKO_V3_SITE_RUNTIME */
+(function(){
+  var splash=document.getElementById('eskoV3SplashSite');
+  if(splash) setTimeout(function(){splash.classList.add('is-leaving');setTimeout(function(){splash.remove();},650);},8000);
+  var note=document.getElementById('eskoV3SiteNote');
+  var status=document.getElementById('eskoV3SiteNoteStatus');
+  if(note){try{note.value=localStorage.getItem('esko_v3_site_note')||'';}catch(e){}
+    note.addEventListener('input',function(){try{localStorage.setItem('esko_v3_site_note',note.value);if(status)status.textContent='تم الحفظ في هذا المتصفح';}catch(e){if(status)status.textContent='تعذر الحفظ المحلي';}});
+  }
+  var filter=document.getElementById('eskoV3SiteFilter');
+  if(filter)filter.addEventListener('input',function(){var q=filter.value.toLowerCase().trim();document.querySelectorAll('#eskoV3SiteSources [data-source-name]').forEach(function(card){card.hidden=!card.textContent.toLowerCase().includes(q);});});
+})();
+function eskoV3SitePage(name){
+  document.querySelectorAll('[data-site-v3-page]').forEach(function(p){p.classList.toggle('active',p.getAttribute('data-site-v3-page')===name);});
+  document.querySelectorAll('[data-site-page]').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-site-page')===name);});
+  var hub=document.getElementById('eskoV3SiteHub');if(hub)hub.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function eskoV3SiteSearch(event){if(event)event.preventDefault();var input=document.getElementById('eskoV3SiteQuery'),frame=document.getElementById('eskoV3SiteFrame'),link=document.getElementById('eskoV3SiteOpenSearch');if(!input||!frame||!input.value.trim())return false;var u='https://html.duckduckgo.com/html/?q='+encodeURIComponent(input.value.trim());frame.src=u;if(link)link.href=u;return false;}
+function eskoV3SiteClearNote(){var n=document.getElementById('eskoV3SiteNote'),s=document.getElementById('eskoV3SiteNoteStatus');if(!n||!confirm('تمسح المذكرة المحفوظة في المتصفح؟'))return;n.value='';try{localStorage.removeItem('esko_v3_site_note');}catch(e){}if(s)s.textContent='تم المسح';}
+</script>
+<script src="esko-v31-tools-data.js"></script>
+<script src="esko-v31-tools.js"></script>
+<!-- ESKO_V32_ASSETS_START -->
+<script defer src="esko-v32-hub.js"></script>
+<script defer src="esko-v32-auth.js"></script>
+<script defer src="esko-v32-vault.js"></script>
+<script defer src="esko-v32-termux.js"></script>
+<script defer src="esko-v32-search.js"></script>
+<script defer src="esko-v32-notes.js"></script>
+<!-- ESKO_V32_ASSETS_END -->
 </body>
 </html>

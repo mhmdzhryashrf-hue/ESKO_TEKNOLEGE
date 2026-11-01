@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#090817">
+  <meta name="description" content="ESKO OPEN HUB V4.5 - إضافة مستقلة تجريبية">
+  <title>ESKO OPEN HUB | V4.5</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body data-theme="nebula">
+  <canvas id="geometry" aria-hidden="true"></canvas>
+  <div class="edge edge-start" aria-hidden="true"></div>
+  <div class="edge edge-end" aria-hidden="true"></div>
+
+  <section id="intro" class="intro" aria-label="مقدمة ESKO">
+    <div class="intro-grid" aria-hidden="true"></div>
+    <div class="intro-mark">ESKO</div>
+    <div class="intro-sub">OPEN HUB <span>V4.5</span></div>
+    <div class="intro-line"></div>
+    <p>منظومتك تبدأ من هنا</p>
+    <a class="intro-support" href="https://wa.me/201128530613" target="_blank" rel="noopener">الدعم الفني</a>
+    <button id="skipIntro" class="ghost-button">تخطي المقدمة</button>
+    <div class="intro-count" id="introCount">10</div>
+  </section>
+
+  <div id="lockScreen" class="lock-screen hidden">
+    <div class="lock-card panel">
+      <div class="brand-small">ESKO <span>V4.5</span></div>
+      <h1>قفل الدخول المحلي</h1>
+      <p class="muted">القفل ده محلي للواجهة التجريبية، وليس بديلًا عن قفل Android أو تشفير ملفات التطبيق.</p>
+      <form id="unlockForm">
+        <label for="unlockPassword">كلمة المرور</label>
+        <input id="unlockPassword" type="password" autocomplete="current-password" required minlength="6">
+        <button class="primary-button" type="submit">فتح التطبيق</button>
+      </form>
+      <button id="resetLocalLock" class="text-button">إزالة القفل المحلي من هذا المتصفح</button>
+      <a class="lock-support" href="https://wa.me/201128530613" target="_blank" rel="noopener">الدعم الفني</a>
+    </div>
+  </div>
+
+  <section id="termsScreen" class="terms-screen hidden">
+    <div class="terms-card panel">
+      <div class="brand-small">ESKO <span>V4.5</span></div>
+      <h1>شروط الاستخدام وإخلاء المسؤولية</h1>
+      <div class="terms-copy">
+        <p><b>الاستخدام القانوني:</b> استخدم الأدوات والمحادثات فقط بطريقة قانونية، ولا تفحص موقعًا إلا إذا كنت تملكه أو لديك تصريح صريح من صاحبه.</p>
+        <p><b>حدود الفحص:</b> قسم المؤمّن يراجع مؤشرات تهيئة HTTPS فقط، ولا يضمن اكتشاف كل الثغرات أو إثبات خلو الموقع منها.</p>
+        <p><b>الخصوصية:</b> الملاحظات والصورة والثيمات تُحفظ محليًا. الحسابات والمحادثات المشتركة تحتاج خدمة خلفية غير منشورة في نسخة الموقع الحالية.</p>
+        <p><b>المجتمع:</b> لا تنشر رقم هاتفك أو عنوانك أو كلمات المرور. ارفض الطلبات غير المريحة واستخدم الحظر والإبلاغ. الرسائل الخاصة تتطلب موافقة الطرف الآخر.</p>
+        <p><b>المسؤولية:</b> صاحب الحساب مسؤول عن استخدامه. لا توجد ضمانات تشغيل أو أمان مطلق، ويجب الاحتفاظ بنسخة آمنة من رمز الاسترجاع.</p>
+      </div>
+      <label class="terms-accept"><input id="termsAccepted" type="checkbox"> قرأت الشروط وأوافق على الالتزام بها.</label>
+      <button id="acceptTerms" class="primary-button" disabled>موافقة ودخول</button>
+      <a class="lock-support" href="https://wa.me/201128530613" target="_blank" rel="noopener">الدعم الفني</a>
+    </div>
+  </section>
+
+  <div id="appShell" class="app-shell hidden">
+    <header class="topbar panel">
+      <button id="menuToggle" class="icon-button" aria-label="فتح القائمة" aria-expanded="false"><span></span><span></span><span></span></button>
+      <div class="top-brand"><strong>ESKO</strong><small>OPEN HUB · V4.5</small></div>
+      <div class="top-actions">
+        <span id="netState" class="network-pill">محلي</span>
+        <button id="themeQuick" class="icon-button sparkle" aria-label="تغيير الخلفية">✦</button>
+      </div>
+    </header>
+
+    <div class="layout">
+      <div id="menuShade" class="menu-shade"></div>
+      <aside id="sideMenu" class="side-menu panel" aria-label="القائمة الجانبية">
+        <div class="side-head"><span class="side-emblem">♕</span><div><b>ESKO JOKER</b><small>المنظومة البرمجية</small></div></div>
+        <nav class="nav-list">
+          <button class="nav-item active" data-page="home"><span>⌂</span> الرئيسية</button>
+          <button class="nav-item" data-page="settings"><span>⚙</span> الإعدادات</button>
+          <button class="nav-item" data-page="about"><span>▣</span> الإصدار والوصف</button>
+          <button class="nav-item" data-page="processor"><span>◈</span> نوعية المعالج</button>
+          <button class="nav-item" data-page="account"><span>♙</span> الحساب</button>
+          <button class="nav-item" data-page="support"><span>✉</span> الدعم</button>
+          <button class="nav-item" data-page="discussions"><span>◎</span> المناقشات</button>
+          <button class="nav-item" data-page="notes"><span>✎</span> ملاحظاتك</button>
+          <button class="nav-item" data-page="memory"><span>▤</span> وحدة الذاكرة</button>
+          <button class="nav-item" data-page="termux"><span class="termux-mini">▣</span> قسم تريمكس</button>
+          <button class="nav-item" data-page="scanner"><span>◇</span> المؤمن · فحص آمن</button>
+        </nav>
+        <div class="side-footer"><span class="status-dot"></span> واجهة V4.5 مستقلة</div>
+      </aside>
+
+      <main id="mainContent" class="main-content">
+        <section class="page active" id="page-home">
+          <div class="hero panel">
+            <div class="hero-copy"><span class="eyebrow">WELCOME TO THE SYSTEM</span><h1>♕ ESKO <em>JOKER</em></h1><p>منظومة واحدة لإدارة أدواتك وملاحظاتك ومجتمعك.</p><div class="hero-chips"><span>V4.5 ADD-ON</span><span>RTL</span><span>LOCAL STORAGE</span></div></div>
+            <div class="hero-orbit" aria-hidden="true"><i></i><b></b><span></span><div>ESKO</div></div>
+          </div>
+          <div class="section-heading"><div><span class="eyebrow">CONTROL CENTER</span><h2>لوحة المنظومة</h2></div><span class="live-tag"><i></i> جاهز محليًا</span></div>
+          <div class="quick-grid">
+            <button class="quick-card panel" data-go="account"><span>♙</span><b>الحساب</b><small>إنشاء واسترجاع</small></button>
+            <button class="quick-card panel" data-go="discussions"><span>◎</span><b>المناقشات</b><small>عام ومجموعات ورسائل</small></button>
+            <button class="quick-card panel" data-go="notes"><span>✎</span><b>ملاحظاتك</b><small>حفظ على الجهاز</small></button>
+            <button class="quick-card panel" data-go="scanner"><span>◇</span><b>المؤمّن</b><small>فحص إعدادات الموقع</small></button>
+          </div>
+          <div class="panel notice-panel"><span class="notice-icon">!</span><div><b>تنبيه إصدار تجريبي</b><p>الخدمات المحلية تعمل على هذا الجهاز. الحسابات والمحادثات لا تصبح متاحة للناس على الإنترنت إلا بعد نشر خادم آمن وربطه بالموقع.</p></div></div>
+        </section>
+
+        <section class="page" id="page-settings">
+          <div class="page-title"><span class="eyebrow">PERSONALIZATION</span><h1>الإعدادات</h1><p>اختار شكل الواجهة وحركة الإضاءة والقفل المحلي.</p></div>
+          <div class="panel content-panel">
+            <h3>الخلفيات المتحركة</h3><div class="theme-grid">
+              <button class="theme-choice selected" data-theme-choice="nebula"><i class="theme-preview nebula-preview"></i><b>سديم</b></button>
+              <button class="theme-choice" data-theme-choice="grid"><i class="theme-preview grid-preview"></i><b>شبكة هندسية</b></button>
+              <button class="theme-choice" data-theme-choice="aurora"><i class="theme-preview aurora-preview"></i><b>شفق</b></button>
+              <button class="theme-choice" data-theme-choice="cyber"><i class="theme-preview cyber-preview"></i><b>سايبر</b></button>
+            </div>
+            <div class="setting-row"><div><b>سرعة خطوط جوانب الشاشة</b><small>البطيئة هي الافتراضية</small></div><select id="edgeSpeed"><option value="slow">بطيئة</option><option value="medium">متوسطة</option><option value="fast">سريعة</option></select></div>
+            <div class="setting-row"><div><b>حركة الأشكال الهندسية</b><small>تقليل الحركة يحافظ على البطارية</small></div><label class="switch"><input id="motionToggle" type="checkbox" checked><span></span></label></div>
+            <div class="setting-row"><div><b>صوت المقدمة</b><small>صوت إلكتروني منخفض لمدة 10 ثوانٍ؛ مغلق افتراضيًا</small></div><label class="switch"><input id="soundToggle" type="checkbox"><span></span></label></div>
+            <div class="setting-row"><div><b>قفل الواجهة بكلمة مرور</b><small>قفل محلي تجريبي، ليس تشفيرًا للملفات</small></div><button id="setLocalLock" class="small-button">إعداد القفل</button></div>
+            <div class="setting-row"><div><b>التعرّف على الجهاز الموثوق</b><small>يتطلب دمج Android Keystore في التطبيق الأصلي؛ غير مفعل في الإضافة المستقلة.</small></div><span class="tag">بانتظار الدمج</span></div>
+            <p class="helper-text">الحماية القوية للتطبيق تحتاج دمج Android Keystore داخل كود Java/Kotlin الأصلي؛ ملف الإضافة وحده لا يقدرش يضمن ده.</p>
+          </div>
+        </section>
+
+        <section class="page" id="page-about">
+          <div class="page-title"><span class="eyebrow">RELEASE NOTES</span><h1>الإصدار والوصف</h1></div>
+          <div class="panel content-panel release-card"><div class="release-number">4.5</div><div><h2>ESKO OPEN HUB</h2><p>حزمة إضافة مستقلة فوق خط V3.2، لا تستبدل ملفات الإصدار السابق.</p><span class="release-state">ADD-ON · PREVIEW</span></div></div>
+          <div class="panel content-panel"><h3>المكونات الموجودة في الحزمة</h3><ul class="feature-list"><li>أربع خلفيات متحركة وقائمة جانبية بتأثير مستقل.</li><li>مقدمة هندسية 10 ثوانٍ وصوت اختياري منخفض.</li><li>تخزين محلي للملاحظات والإعدادات والصورة الشخصية.</li><li>واجهة حساب مع تسجيل واسترجاع عبر خادم محلي.</li><li>نموذج محادثات عام ومجموعات وطلبات رسائل خاصة.</li><li>فحص سلبي لعدد 13 مؤشر إعداد أمني للمواقع المصرح بها.</li></ul></div>
+        </section>
+
+        <section class="page" id="page-processor">
+          <div class="page-title"><span class="eyebrow">DEVICE & PERFORMANCE</span><h1>نوعية المعالج</h1><p>بيانات المتصفح والجهاز التي يسمح النظام بقراءتها.</p></div>
+          <div class="stats-grid"><div class="panel stat-card"><small>أنوية منطقية متاحة</small><strong id="cpuCores">—</strong></div><div class="panel stat-card"><small>الذاكرة المعلنة</small><strong id="deviceMemory">غير متاحة</strong></div><div class="panel stat-card"><small>منصة النظام التي يكشفها المتصفح</small><strong id="cpuArch">غير مكشوفة</strong></div><div class="panel stat-card"><small>حالة الحركة</small><strong id="motionState">مفعّلة</strong></div></div>
+          <div class="panel content-panel"><h3>محركات المساعدة</h3><div class="assistant-row"><div><b>المحرك الأول · مساعد ESKO</b><small>قواعد محلية وإرشادات ثابتة، بدون اتصال خارجي.</small></div><span class="tag">محلي</span></div><div class="assistant-row"><div><b>المحرك الثاني · مساعد البرمجة</b><small>قواعد مساعدة أولية؛ ليس نموذج ذكاء اصطناعي توليديًا بعد.</small></div><span class="tag">تجريبي</span></div><label class="assistant-input-label">جرّب أحد المحركين<select id="assistantEngine"><option value="esko">مساعد ESKO</option><option value="code">مساعد البرمجة</option></select></label><textarea id="assistantQuestion" rows="3" maxlength="1200" placeholder="اكتب سؤالك..." ></textarea><button id="askAssistant" class="small-button">تشغيل المساعد المحلي</button><div id="assistantAnswer" class="assistant-answer">الردود محلية وقواعدية وليست ناتجة عن نموذج AI توليدي.</div><p class="helper-text">لا يوجد ادعاء بزيادة سرعة CPU أو تشغيل نموذجين AI جاهزين على الهاتف. التحسين الفعلي هنا يعتمد على تقليل إعادة الرسم والحركة غير الضرورية.</p></div>
+        </section>
+
+        <section class="page" id="page-account">
+          <div class="page-title"><span class="eyebrow">IDENTITY</span><h1>الحساب</h1><p>أنشئ اسم مستخدم فريدًا، واحفظ رمز الاسترجاع في مكان آمن.</p></div>
+          <div class="panel content-panel notice"><b>نسخة موقع ثابتة:</b> التسجيل الفعلي وتفرّد أسماء المستخدمين واسترجاع الحساب من جهاز آخر تحتاج خدمة خلفية آمنة منشورة. نماذج الحساب معطلة هنا حتى لا تُدخل كلمة مرور في خدمة غير متصلة.</div>
+          <div id="accountStatus" class="panel account-status"><b>الملف المحلي فقط</b><span>يمكنك حفظ صورة واسم عرض على هذا الجهاز؛ لا يوجد حساب أونلاين بعد.</span></div>
+          <div class="panel content-panel"><h3>إنشاء حساب جديد</h3><form id="registerForm" class="form-grid"><label>الاسم الظاهر<input name="displayName" maxlength="40" required></label><label>اسم المستخدم الفريد<input name="username" minlength="3" maxlength="20" pattern="[A-Za-z0-9_]+" required></label><label>السن<input name="age" type="number" min="13" max="17" required></label><label>كلمة مرور جديدة<input name="password" type="password" minlength="10" autocomplete="new-password" required></label><button class="primary-button" type="submit">إنشاء الحساب أونلاين</button></form><div id="recoveryReveal" class="recovery-box hidden"></div></div>
+          <div class="panel content-panel"><h3>تسجيل الدخول</h3><form id="loginForm" class="form-grid"><label>اسم المستخدم<input name="username" required></label><label>كلمة المرور<input name="password" type="password" required></label><button class="primary-button" type="submit">دخول</button></form><button id="logoutButton" class="text-button">تسجيل الخروج</button></div>
+          <div class="panel content-panel"><h3>استرجاع الحساب</h3><form id="recoverForm" class="form-grid"><label>اسم المستخدم<input name="username" required></label><label>رمز الاسترجاع الاحتياطي<input name="recoveryCode" required></label><label>كلمة المرور الجديدة<input name="newPassword" type="password" minlength="10" required></label><button class="small-button" type="submit">استرجاع وتغيير كلمة المرور</button></form></div>
+          <div class="panel content-panel"><h3>الصورة الشخصية</h3><input id="avatarInput" type="file" accept="image/png,image/jpeg,image/webp"><img id="avatarPreview" class="avatar-preview hidden" alt="معاينة الصورة الشخصية"><p class="helper-text">الصورة تُحفظ محليًا على الجهاز في هذه النسخة، ولا تتم مزامنتها للخادم.</p></div>
+        </section>
+
+        <section class="page" id="page-support">
+          <div class="page-title"><span class="eyebrow">OFFICIAL CHANNELS</span><h1>الدعم والقنوات</h1></div>
+          <div class="support-grid">
+            <a class="panel support-card" href="https://whatsapp.com/channel/0029VbE7vGO4tRrwmz95M73S" target="_blank" rel="noopener"><span>♕</span><b>القناة الرسمية</b><small>ESKO JOKER</small></a>
+            <a class="panel support-card" href="https://whatsapp.com/channel/0029VbEH9N2LY6d4aZ8FRW0I" target="_blank" rel="noopener"><span>⌘</span><b>أكاديمية البرمجة</b><small>تعلم البرمجة</small></a>
+            <a class="panel support-card" href="https://whatsapp.com/channel/0029Vb9NAZoKAwEu7UjBxJ02" target="_blank" rel="noopener"><span>▤</span><b>قناة التعليمات</b><small>أوامر وإرشادات</small></a>
+          </div>
+          <a class="primary-link" href="https://wa.me/201128530613" target="_blank" rel="noopener">فتح محادثة الدعم على واتساب</a>
+        </section>
+
+        <section class="page" id="page-notes">
+          <div class="page-title"><span class="eyebrow">PERSONAL SPACE</span><h1>ملاحظاتك</h1><p>ملاحظاتك محفوظة في وحدة التخزين الداخلية للواجهة على هذا الجهاز.</p></div>
+          <div class="panel content-panel"><textarea id="noteInput" rows="9" maxlength="20000" placeholder="اكتب ملاحظتك هنا..."></textarea><div class="form-actions"><button id="saveNote" class="primary-button">حفظ الملاحظة</button><button id="clearNote" class="small-button">مسح النص</button></div><p id="noteState" class="helper-text">لم يتم الحفظ بعد.</p></div>
+          <a class="primary-link" href="https://wa.me/201128530613" target="_blank" rel="noopener">تواصل مع حساب الدعم</a>
+        </section>
+
+        <section class="page" id="page-memory">
+          <div class="page-title"><span class="eyebrow">LOCAL DATA CORE</span><h1>وحدة الذاكرة</h1><p>مساحة البيانات المحلية الخاصة بالواجهة على هذا الجهاز.</p></div>
+          <div class="stats-grid"><div class="panel stat-card"><small>الملاحظات</small><strong id="memoryNotes">—</strong></div><div class="panel stat-card"><small>الصورة الشخصية</small><strong id="memoryAvatar">—</strong></div><div class="panel stat-card"><small>الثيم</small><strong id="memoryTheme">—</strong></div><div class="panel stat-card"><small>المساحة التقريبية</small><strong id="memoryUsage">—</strong></div></div>
+          <div class="panel content-panel"><h3>بيانات هذا الجهاز</h3><p class="helper-text">الملاحظات والإعدادات والصورة الشخصية تحفظ محليًا في IndexedDB. الحسابات والرسائل في ملف قاعدة بيانات الخادم المحلي. هذه الوحدة لا تضمن النسخ الاحتياطي التلقائي ولا تشفير بيانات المتصفح.</p><button id="exportLocalBackup" class="primary-button">تصدير نسخة من البيانات المحلية</button><p class="helper-text">النسخة المصدّرة قد تحتوي على ملاحظات خاصة وصورة شخصية؛ احتفظ بها في مكان آمن ولا تشاركها.</p></div>
+        </section>
+
+        <section class="page" id="page-termux">
+          <div class="page-title"><span class="eyebrow">TERMUX WORKSPACE</span><h1 class="termux-title">ESKO</h1><p>واجهة ESKO لقسم تريمكس.</p></div>
+          <div class="panel terminal-panel"><div class="terminal-top"><span class="termux-app-icon">▣</span><b>ESKO TERMINAL</b><span class="terminal-lights">● ● ●</span></div><div id="terminalOutput" class="terminal-output"><p>ESKO V4.5 · مساحة أوامر تعليمية</p><p>اكتب <b>help</b> لعرض الأوامر المتاحة.</p></div><form id="terminalForm" class="terminal-input"><span>$</span><input id="terminalCommand" autocomplete="off" spellcheck="false" placeholder="اكتب أمرًا..." aria-label="أمر تريمكس"><button type="submit">تنفيذ</button></form></div>
+          <p class="helper-text">دي واجهة أوامر محلية آمنة وليست طرفية Android حقيقية. تشغيل أوامر نظام الهاتف من داخل التطبيق يحتاج تكاملًا أصليًا وصلاحيات Android لم تُرفق ملفاتها بعد.</p>
+        </section>
+
+        <section class="page" id="page-scanner">
+          <div class="page-title"><span class="eyebrow">AUTHORIZED SITE REVIEW</span><h1>المؤمّن</h1><p>فحص سلبي لإعدادات موقع تملكه أو لديك تصريح صريح بفحصه.</p></div>
+          <div class="notice">الفحص الشبكي غير مفعّل في الاستضافة الثابتة؛ يحتاج خدمة خلفية. استخدم الفحص فقط على موقع تملكه أو لديك تصريح واضح بفحصه.</div>
+          <div class="panel content-panel"><form id="scanForm" class="form-grid"><label>عنوان الموقع<input id="scanUrl" type="url" inputmode="url" placeholder="https://example.com" required></label><label class="check-line"><input id="scanAuthorize" type="checkbox" required> أؤكد أني مالك الموقع أو لدي تصريح واضح بفحصه.</label><button class="primary-button" type="submit">بدء الفحص الآمن</button></form><p class="helper-text">لا يوجد استغلال للثغرات أو تخمين كلمات مرور أو فحص منافذ أو زحف للمسارات. النطاقات العامة المعروفة محظورة داخل القائمة المبدئية، والقائمة ليست ضمانًا بحصر كل المواقع المعروفة.</p></div>
+          <div id="scanResults" class="panel content-panel hidden"><h3>نتيجة الفحص</h3><p class="muted">13 مؤشر إعداد سلبي، وليست 13 عملية اختراق أو فحص كامل للهاتف.</p><div id="scanList" class="scan-list"></div><p class="helper-text">المصدر المرجعي: OWASP Secure Headers Project. النتيجة لا تثبت خلو الموقع من الثغرات.</p><a href="https://owasp.org/projects/secure-headers-project" target="_blank" rel="noopener">مرجع OWASP</a></div>
+        </section>
+
+        <section class="page" id="page-discussions">
+          <div class="page-title"><span class="eyebrow">COMMUNITY</span><h1>المناقشات</h1><p>المحادثة العامة، المجموعات بالدعوة، والرسائل الخاصة بطلب قبول.</p></div>
+          <div class="notice">المحادثات المشتركة غير مفعّلة على GitHub Pages وحدها. يلزم خادم HTTPS مشترك وقاعدة بيانات حتى تصل الرسائل لكل المستخدمين. لن نعرض رسائل محلية على أنها عامة.</div>
+          <div class="panel content-panel"><div class="tabs"><button class="tab active" data-chat-tab="general">العامة</button><button class="tab" data-chat-tab="groups">المجموعات</button><button class="tab" data-chat-tab="private">الخاص</button></div>
+            <div id="chat-general" class="chat-view"><div id="generalMessages" class="messages"></div><form id="generalForm" class="chat-compose"><input name="message" maxlength="1000" placeholder="اكتب رسالة عامة..." required><button>إرسال</button></form></div>
+            <div id="chat-groups" class="chat-view hidden"><form id="createGroupForm" class="inline-form"><input name="name" maxlength="40" placeholder="اسم المجموعة" required><button class="small-button">إنشاء مجموعة</button></form><form id="joinGroupForm" class="inline-form"><input name="invite" placeholder="كود أو رابط الدعوة" required><button class="small-button">انضمام بموافقتك</button></form><div id="groupList" class="group-list"></div><div id="groupChat" class="hidden"><h3 id="groupChatTitle"></h3><div id="groupMessages" class="messages"></div><form id="groupMessageForm" class="chat-compose"><input name="message" maxlength="1000" placeholder="رسالة للمجموعة" required><button>إرسال</button></form></div></div>
+            <div id="chat-private" class="chat-view hidden"><form id="dmRequestForm" class="inline-form"><input name="username" placeholder="اسم المستخدم" required><button class="small-button">طلب مراسلة</button></form><div id="dmRequests" class="group-list"></div><div id="dmList" class="group-list"></div><div id="dmChat" class="hidden"><h3 id="dmTitle"></h3><div id="dmMessages" class="messages"></div><form id="dmMessageForm" class="chat-compose"><input name="message" maxlength="1000" placeholder="رسالة خاصة" required><button>إرسال</button></form></div></div>
+          </div>
+          <p class="helper-text">الرسائل الخاصة لا تفتح تلقائيًا: الطرف الآخر يقبل الطلب أولًا. استخدم الحظر والإبلاغ عند الإزعاج، ولا تشارك بيانات شخصية أو كلمات مرور.</p>
+        </section>
+      </main>
+    </div>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script src="./store.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

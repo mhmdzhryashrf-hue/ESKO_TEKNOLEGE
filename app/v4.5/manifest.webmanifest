@@ -1,0 +1,19 @@
+{
+  "name": "ESKO OPEN HUB V4.5",
+  "short_name": "ESKO V4.5",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#090817",
+  "theme_color": "#090817",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
