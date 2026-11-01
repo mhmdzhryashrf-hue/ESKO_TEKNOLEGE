@@ -194,5 +194,65 @@
   </div>
   <script src="./store.js"></script>
   <script src="./app.js"></script>
+<!-- ESKO_VIDEO_INTRO_START -->
+<style>
+#esko-video-intro {
+  position:fixed; inset:0; z-index:2147483647;
+  background:#05020b; display:flex; align-items:center;
+  justify-content:center; overflow:hidden;
+}
+#esko-video-intro video {
+  width:100%; height:100%; object-fit:cover;
+}
+#esko-intro-controls {
+  position:absolute; bottom:25px; left:0; right:0;
+  display:flex; justify-content:center; gap:12px;
+  padding:12px;
+}
+#esko-intro-controls button {
+  border:1px solid #00eaff; border-radius:12px;
+  padding:12px 20px; color:white;
+  background:#17102b; font-size:15px; font-weight:bold;
+}
+</style>
+<div id="esko-video-intro">
+  <video id="esko-intro-video" autoplay muted playsinline
+         webkit-playsinline preload="auto">
+    <source src="../../media/esko-intro.mp4" type="video/mp4">
+  </video>
+  <div id="esko-intro-controls">
+    <button id="esko-intro-sound">تشغيل الصوت 🔊</button>
+    <button id="esko-intro-skip">تخطي المقدمة</button>
+  </div>
+</div>
+<script>
+(function() {
+  const layer = document.getElementById('esko-video-intro');
+  const video = document.getElementById('esko-intro-video');
+  if (!layer || !video) return;
+
+  function finishIntro() {
+    if (layer) layer.remove();
+  }
+
+  document.getElementById('esko-intro-skip')
+    .addEventListener('click', finishIntro);
+
+  document.getElementById('esko-intro-sound')
+    .addEventListener('click', function() {
+      video.muted = false;
+      video.volume = 1;
+      video.play().catch(function() {});
+      this.textContent = 'الصوت يعمل 🔊';
+    });
+
+  video.addEventListener('ended', finishIntro, {once:true});
+  video.addEventListener('error', finishIntro, {once:true});
+  video.play().catch(function() {
+    video.controls = true;
+  });
+})();
+</script>
+<!-- ESKO_VIDEO_INTRO_END -->
 </body>
 </html>
