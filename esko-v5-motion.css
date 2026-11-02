@@ -1,0 +1,16 @@
+#esko-v5-motion-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+  opacity: .48;
+  mix-blend-mode: screen;
+}
+@media(max-width:600px) {
+  #esko-v5-motion-canvas { opacity: .34; }
+}
+@media(prefers-reduced-motion:reduce) {
+  #esko-v5-motion-canvas { opacity: .25; }
+}
