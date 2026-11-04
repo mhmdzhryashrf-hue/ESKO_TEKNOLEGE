@@ -1,0 +1,38 @@
+/* ESKO OPEN HUB V3.2 - additive UI only; existing page background is untouched. */
+:root{--ev32-cyan:#68e7ff;--ev32-purple:#a98bff;--ev32-text:#edf5ff;--ev32-muted:#aebbd0;--ev32-panel:#0c1224;--ev32-line:rgba(135,190,255,.22)}
+#eskoV32Launcher{position:fixed;z-index:2147483000;inset:auto 16px 18px auto;border:1px solid rgba(104,231,255,.6);border-radius:999px;padding:11px 16px;background:linear-gradient(120deg,#4c2d7d,#12556b);color:#fff;font:800 13px/1.2 system-ui,sans-serif;box-shadow:0 8px 28px rgba(0,0,0,.38),0 0 18px rgba(104,231,255,.16);cursor:pointer;direction:rtl}
+#eskoV32Launcher:active{transform:scale(.97)}
+#eskoV32Overlay[hidden],#eskoV32Gate[hidden]{display:none!important}
+#eskoV32Overlay{position:fixed;z-index:2147483001;inset:0;display:flex;align-items:center;justify-content:center;padding:12px;background:rgba(3,5,14,.76);backdrop-filter:blur(6px);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ev32-text);direction:rtl}
+#eskoV32Window{position:relative;isolation:isolate;overflow:hidden;width:min(980px,100%);height:min(820px,94dvh);border:1px solid rgba(104,231,255,.28);border-radius:22px;background:linear-gradient(145deg,rgba(14,17,38,.98),rgba(7,19,34,.98));box-shadow:0 24px 80px rgba(0,0,0,.58);display:flex;flex-direction:column}
+#eskoV32Window:before,#eskoV32Window:after{content:"";pointer-events:none;position:absolute;z-index:-1;border:1px solid rgba(169,139,255,.17);width:300px;height:300px;transform:rotate(34deg);animation:ev32Orbit 28s linear infinite}
+#eskoV32Window:before{top:-180px;left:-100px;border-radius:28px}
+#eskoV32Window:after{right:-210px;bottom:-220px;width:390px;height:390px;border-color:rgba(104,231,255,.15);animation-direction:reverse;animation-duration:34s}
+@keyframes ev32Orbit{to{rotate:360deg}}
+.ev32-head{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:15px 17px;border-bottom:1px solid var(--ev32-line);background:rgba(10,14,29,.88)}
+.ev32-brand{font-weight:900;letter-spacing:.3px}.ev32-brand small{display:block;margin-top:4px;color:var(--ev32-cyan);font-size:10px;letter-spacing:1.6px}
+.ev32-head-actions{display:flex;gap:7px;align-items:center}.ev32-icon-btn{min-width:38px;min-height:38px;border:1px solid var(--ev32-line);border-radius:11px;background:rgba(255,255,255,.05);color:#fff;font-size:17px;cursor:pointer}
+.ev32-nav{display:flex;gap:7px;overflow-x:auto;padding:10px 12px;border-bottom:1px solid var(--ev32-line);scrollbar-width:thin}
+.ev32-nav button{flex:0 0 auto;border:1px solid var(--ev32-line);border-radius:999px;background:rgba(255,255,255,.045);color:var(--ev32-text);padding:9px 13px;font:700 12px system-ui;cursor:pointer}
+.ev32-nav button[aria-selected=true]{border-color:var(--ev32-cyan);background:linear-gradient(110deg,rgba(107,73,174,.5),rgba(16,105,126,.42));box-shadow:0 0 14px rgba(104,231,255,.12)}
+.ev32-main{min-height:0;flex:1;overflow:auto;padding:15px;scrollbar-color:#3f6381 transparent}
+.ev32-page{display:none;animation:ev32Page .28s ease both}.ev32-page.active{display:block}@keyframes ev32Page{from{opacity:.4;transform:translateY(8px) scale(.99)}to{opacity:1;transform:none}}
+.ev32-hero{position:relative;overflow:hidden;padding:18px;border:1px solid var(--ev32-line);border-radius:18px;background:linear-gradient(125deg,rgba(61,38,101,.65),rgba(12,66,83,.48))}
+.ev32-hero:after{content:"";position:absolute;left:-28px;top:-52px;width:150px;height:150px;border:1px solid rgba(104,231,255,.28);border-radius:50%;box-shadow:0 0 0 16px rgba(104,231,255,.035),0 0 0 34px rgba(169,139,255,.025);pointer-events:none}
+.ev32-kicker{color:var(--ev32-cyan);font-size:10px;font-weight:900;letter-spacing:1.7px}.ev32-title{font-size:clamp(21px,4vw,31px);font-weight:900;margin:8px 0}.ev32-desc{color:var(--ev32-muted);line-height:1.8;font-size:13px}
+.ev32-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,215px),1fr));gap:11px;margin-top:13px}
+.ev32-card{min-width:0;padding:14px;border:1px solid var(--ev32-line);border-radius:15px;background:linear-gradient(150deg,rgba(29,26,56,.88),rgba(8,26,40,.9));box-shadow:0 8px 20px rgba(0,0,0,.15)}
+.ev32-card h3{font-size:15px;margin:0 0 8px}.ev32-card p{font-size:12px;color:var(--ev32-muted);line-height:1.75;margin:6px 0}
+.ev32-btn,.ev32-link{display:inline-flex;align-items:center;justify-content:center;gap:6px;margin:5px 4px 0 0;padding:9px 12px;border:1px solid rgba(104,231,255,.4);border-radius:10px;background:linear-gradient(110deg,#493078,#12566a);color:#fff;text-decoration:none;font:700 12px system-ui;cursor:pointer}
+.ev32-btn.secondary{background:rgba(85,69,120,.3);border-color:var(--ev32-line)}
+.ev32-field,.ev32-area{display:block;box-sizing:border-box;width:100%;min-width:0;margin:8px 0;padding:12px;border:1px solid rgba(126,180,230,.32);border-radius:11px;background:#080d1b;color:#fff;font:13px/1.6 system-ui;outline:none}
+.ev32-field:focus,.ev32-area:focus{border-color:var(--ev32-cyan);box-shadow:0 0 0 2px rgba(104,231,255,.1)}.ev32-area{min-height:160px;resize:vertical}
+.ev32-code{display:block;direction:ltr;text-align:left;white-space:pre-wrap;overflow-wrap:anywhere;padding:10px;margin:9px 0;border-radius:9px;background:#050914;border:1px solid rgba(104,231,255,.16);color:#95edff;font:12px/1.7 ui-monospace,monospace}
+.ev32-note{margin:11px 0;padding:11px 13px;border-inline-start:3px solid var(--ev32-cyan);border-radius:9px;background:rgba(36,31,66,.62);color:#c9d7eb;font-size:12px;line-height:1.8}
+.ev32-status{min-height:20px;color:var(--ev32-cyan);font-size:11px;margin:7px 0}.ev32-small{color:var(--ev32-muted);font-size:11px;line-height:1.8}.ev32-list{display:grid;gap:9px}.ev32-row{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap;padding:11px;border:1px solid var(--ev32-line);border-radius:12px;background:rgba(255,255,255,.035)}
+#eskoV32Gate{position:fixed;z-index:2147483002;inset:0;display:grid;place-items:center;padding:18px;background:rgba(3,5,14,.97);font-family:system-ui,sans-serif;color:#f3f7ff;direction:rtl}
+.ev32-gate-card{width:min(460px,100%);max-height:92dvh;overflow:auto;padding:22px;border:1px solid rgba(104,231,255,.35);border-radius:20px;background:linear-gradient(145deg,#14142c,#09202b);box-shadow:0 24px 80px rgba(0,0,0,.55)}
+.ev32-gate-card h2{margin:7px 0 10px}.ev32-check{display:flex;gap:9px;align-items:flex-start;margin:12px 0;color:#d9e4f5;font-size:12px;line-height:1.7}.ev32-check input{margin-top:4px;accent-color:#68e7ff}
+@media(max-width:560px){#eskoV32Overlay{padding:0}#eskoV32Window{height:100dvh;width:100%;border-radius:0;border-inline:0}.ev32-main{padding:11px}.ev32-head{padding:12px}.ev32-grid{grid-template-columns:1fr 1fr}.ev32-card{padding:11px}}
+@media(max-width:360px){.ev32-grid{grid-template-columns:1fr}.ev32-nav button{padding:8px 10px}}
+@media(prefers-reduced-motion:reduce){#eskoV32Window:before,#eskoV32Window:after,.ev32-page{animation:none!important}.ev32-page.active{transform:none}}

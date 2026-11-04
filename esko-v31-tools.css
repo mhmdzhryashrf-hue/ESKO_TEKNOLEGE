@@ -1,0 +1,25 @@
+/* ESKO JOKER V3.1 • responsive, low-power UI */
+#eskoV31Panel{position:relative;isolation:isolate;overflow:hidden;margin:18px 0;padding:16px;border:1px solid rgba(87,222,255,.34);border-radius:20px;background:linear-gradient(145deg,rgba(16,12,35,.97),rgba(8,20,39,.96));color:#eff8ff;box-shadow:0 12px 36px rgba(0,0,0,.24);contain:content;font-family:inherit}
+#eskoV31Panel *{box-sizing:border-box}
+#eskoV31Panel .v31-head{position:relative;z-index:1;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+#eskoV31Panel .v31-brand{font-weight:900;letter-spacing:.3px;color:#7deaff;text-shadow:0 0 16px rgba(66,210,255,.2)}
+#eskoV31Panel .v31-sub{color:#b9c8dc;font-size:.88rem;line-height:1.7;margin:8px 0 14px;max-width:850px}
+#eskoV31Panel .v31-canvas{position:absolute;inset:0 0 auto;width:100%;height:150px;z-index:-1;opacity:.5;pointer-events:none}
+#eskoV31Panel .v31-controls{display:grid;grid-template-columns:minmax(180px,1fr) minmax(150px,230px);gap:9px;margin:12px 0}
+#eskoV31Panel input,#eskoV31Panel select{min-width:0;width:100%;padding:11px 12px;border-radius:12px;border:1px solid rgba(109,214,255,.3);background:#101a31;color:#f3f7ff;outline:none}
+#eskoV31Panel input:focus,#eskoV31Panel select:focus{border-color:#59e2ff;box-shadow:0 0 0 2px rgba(89,226,255,.15)}
+#eskoV31Panel .v31-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#eskoV31Panel .v31-card{min-width:0;border:1px solid rgba(101,205,255,.23);border-radius:15px;padding:12px;background:rgba(11,18,36,.91);box-shadow:0 5px 16px rgba(0,0,0,.16)}
+#eskoV31Panel .v31-card h4{font-size:.96rem;margin:0 0 7px;color:#eafaff;line-height:1.5}
+#eskoV31Panel .v31-meta{font-size:.76rem;color:#86ddf4;margin-bottom:7px}
+#eskoV31Panel .v31-desc{font-size:.84rem;color:#c5d1e2;line-height:1.6;min-height:2.6em}
+#eskoV31Panel .v31-card pre{white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;max-height:126px;overflow:auto;margin:7px 0;padding:9px;border-radius:9px;background:#070d1b;color:#bfefff;font-size:.72rem;direction:ltr;text-align:left;border:1px solid rgba(255,255,255,.07)}
+#eskoV31Panel .v31-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:7px}
+#eskoV31Panel button{border:1px solid rgba(88,219,255,.43);border-radius:10px;padding:8px 10px;background:linear-gradient(120deg,#123b5b,#26204d);color:#effcff;font:inherit;font-size:.78rem;font-weight:750;cursor:pointer}
+#eskoV31Panel button:active{transform:scale(.98)}
+#eskoV31Panel .v31-repo{display:inline-block;margin-top:7px;color:#7ce8ff;font-size:.78rem;text-decoration:none;overflow-wrap:anywhere}
+#eskoV31Panel .v31-pager{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:13px;color:#c7d9e8;font-size:.84rem}
+#eskoV31Panel .v31-footer{font-size:.75rem;color:#8ea3bb;line-height:1.6;margin-top:12px}
+#eskoV31Toast{position:fixed;left:50%;bottom:18px;z-index:2147483000;transform:translateX(-50%);padding:10px 15px;border-radius:12px;background:#102b40;color:#e8fbff;border:1px solid #58dfff;box-shadow:0 8px 25px #0006;font-size:.85rem;display:none;max-width:90vw}
+@media(max-width:620px){#eskoV31Panel{padding:12px;border-radius:16px}#eskoV31Panel .v31-controls{grid-template-columns:1fr}#eskoV31Panel .v31-grid{grid-template-columns:1fr}#eskoV31Panel .v31-card pre{max-height:112px}}
+@media(prefers-reduced-motion:reduce){#eskoV31Panel *,#eskoV31Panel *::before,#eskoV31Panel *::after{animation:none!important;transition:none!important}}

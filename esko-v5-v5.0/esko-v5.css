@@ -3,11 +3,11 @@
 #esko-v5-root *{box-sizing:border-box}
 #esko-v5-launcher{position:fixed;z-index:2147482500;right:16px;bottom:calc(18px + env(safe-area-inset-bottom));border:1px solid rgba(80,233,255,.8);background:linear-gradient(135deg,#1a1740,#0c3441);color:#fff;border-radius:16px;padding:12px 16px;font-weight:900;box-shadow:0 8px 30px #0008,0 0 22px #50e9ff30;cursor:pointer}
 #esko-v5-support{position:fixed;z-index:2147482499;left:14px;bottom:calc(18px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:8px;border:1px solid #20c879;background:#073c2a;color:#fff;border-radius:16px;padding:11px 14px;font-weight:800;text-decoration:none;box-shadow:0 8px 28px #0008}
-#esko-v5-shell{position:fixed;z-index:2147482501;inset:0;background:radial-gradient(circle at 12% 10%,#432b7850,transparent 34%),radial-gradient(circle at 90% 78%,#12647a40,transparent 30%),rgba(5,6,15,.97);backdrop-filter:blur(16px);display:none;overflow:auto;padding:calc(12px + env(safe-area-inset-top)) 12px calc(82px + env(safe-area-inset-bottom))}
+#esko-v5-shell{position:fixed;z-index:2147482501;inset:0;background:radial-gradient(circle at 12% 10%,#432b7850,transparent 34%),radial-gradient(circle at 90% 78%,#12647a40,transparent 30%),rgba(5,6,15,.97);backdrop-filter:blur(8px);display:none;overflow:auto;padding:calc(12px + env(safe-area-inset-top)) 12px calc(82px + env(safe-area-inset-bottom))}
 #esko-v5-shell.open{display:block;animation:ev5-in .25s ease both}
 @keyframes ev5-in{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
 .ev5-wrap{width:min(1120px,100%);margin:0 auto}
-.ev5-head{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;background:#0a0c19ed;border:1px solid var(--ev5-border);border-radius:18px;box-shadow:0 8px 24px #0005;backdrop-filter:blur(12px)}
+.ev5-head{position:sticky;top:0;z-index:5;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px;background:#0a0c19ed;border:1px solid var(--ev5-border);border-radius:18px;box-shadow:0 8px 24px #0005;backdrop-filter:blur(7px)}
 .ev5-brand{font-weight:1000;letter-spacing:.4px}.ev5-brand small{display:block;color:var(--ev5-cyan);font-size:10px;letter-spacing:2px;margin-top:3px}
 .ev5-close,.ev5-btn,.ev5-tab{border:1px solid var(--ev5-border);border-radius:11px;background:#171a31;color:var(--ev5-text);font:inherit;font-weight:800;padding:10px 13px;cursor:pointer}
 .ev5-close{font-size:19px;line-height:1;padding:8px 12px}

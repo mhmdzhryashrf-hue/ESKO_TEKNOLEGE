@@ -150,21 +150,49 @@
       ctx.fillRect(0,scanY,w,1.2);
     }
 
+    let animationId = 0;
+    let running = false;
+
     function frame(t) {
-      if (document.hidden) return;
-      if (t-last >= 45) {
+      animationId = 0;
+
+      if (document.hidden || !running) {
+        running = false;
+        return;
+      }
+
+      if (t-last >= 55) {
         last=t;
         draw(t);
       }
-      requestAnimationFrame(frame);
+
+      animationId = requestAnimationFrame(frame);
+    }
+
+    function startMotion() {
+      if (reduced || document.hidden || running) return;
+      running = true;
+      last = 0;
+      animationId = requestAnimationFrame(frame);
+    }
+
+    function stopMotion() {
+      running = false;
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+        animationId = 0;
+      }
     }
 
     addEventListener("resize",resize,{passive:true});
+
     document.addEventListener("visibilitychange",() => {
-      if (!document.hidden) requestAnimationFrame(frame);
+      if (document.hidden) stopMotion();
+      else startMotion();
     });
+
     resize();
-    if (!reduced) requestAnimationFrame(frame);
+    startMotion();
   };
 
   // تحديث أسماء النسخة التي تظهر في الواجهة

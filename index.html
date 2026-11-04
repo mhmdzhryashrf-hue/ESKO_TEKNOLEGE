@@ -1427,8 +1427,8 @@ function eskoV3SitePage(name){
 function eskoV3SiteSearch(event){if(event)event.preventDefault();var input=document.getElementById('eskoV3SiteQuery'),frame=document.getElementById('eskoV3SiteFrame'),link=document.getElementById('eskoV3SiteOpenSearch');if(!input||!frame||!input.value.trim())return false;var u='https://html.duckduckgo.com/html/?q='+encodeURIComponent(input.value.trim());frame.src=u;if(link)link.href=u;return false;}
 function eskoV3SiteClearNote(){var n=document.getElementById('eskoV3SiteNote'),s=document.getElementById('eskoV3SiteNoteStatus');if(!n||!confirm('تمسح المذكرة المحفوظة في المتصفح؟'))return;n.value='';try{localStorage.removeItem('esko_v3_site_note');}catch(e){}if(s)s.textContent='تم المسح';}
 </script>
-<script src="esko-v31-tools-data.js"></script>
-<script src="esko-v31-tools.js"></script>
+<script defer src="esko-v31-tools-data.js"></script>
+<script defer src="esko-v31-tools.js"></script>
 <!-- ESKO_V32_ASSETS_START -->
 <script defer src="esko-v32-hub.js"></script>
 <script defer src="esko-v32-auth.js"></script>
@@ -1460,7 +1460,7 @@ function eskoV3SiteClearNote(){var n=document.getElementById('eskoV3SiteNote'),s
 </style>
 <div id="esko-video-intro">
   <video id="esko-intro-video" autoplay muted playsinline
-         webkit-playsinline preload="auto">
+         webkit-playsinline preload="metadata">
     <source src="media/esko-intro.mp4" type="video/mp4">
   </video>
   <div id="esko-intro-controls">
